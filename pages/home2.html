@@ -1,0 +1,599 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Assurance Edition — GoldenYears Home Care</title>
+  <meta name="description" content="Compassionate aging-in-place modifications designed to give families complete peace of mind. Vetted craftsmen, same-day grab bars, and transparent family monitoring.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <span>⭐ <strong>Family Assurance Edition:</strong> Same-day dispatch available for urgent hospital-discharge safety needs.</span>
+      </div>
+      <div class="top-bar-links">
+        <span>Caregiver Direct Line: <a href="tel:18005550199">(800) 555-0199</a></span>
+        <a href="dashboard.html" style="text-decoration:none;">Family Dashboard →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Site Navigation -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo" aria-label="GoldenYears Home Care Home">
+        <div class="brand-logo-icon">🌿</div>
+        <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link active">Home 2</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="blog.html" class="nav-link">Journal</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link" style="color:var(--color-forest); font-weight:700;">Family Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <span>🌙</span>
+        </button>
+        <button class="rtl-toggle-btn" aria-label="Toggle RTL or LTR" title="Toggle RTL">RTL</button>
+        <a href="#book" class="btn btn-terracotta btn-sm open-booking-modal">Schedule Visit</a>
+        <button class="mobile-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 1: Split Editorial Hero with Inline Fast-Booking Card
+       ======================================================================== -->
+  <section class="section section-bg-tertiary" style="padding-top:4rem; padding-bottom:5rem;">
+    <div class="container">
+      <div class="grid grid-2 items-center" style="gap:3.5rem;">
+        <div>
+          <span class="badge badge-forest" style="margin-bottom:1.25rem;">For Concerned Sons, Daughters &amp; Caregivers</span>
+          <h1 style="font-size:clamp(2.4rem, 4vw, 3.6rem); line-height:1.15; margin-bottom:1.25rem;">
+            Rest Easy Knowing Mom &amp; Dad Are Safe at Home.
+          </h1>
+          <p class="text-lead" style="margin-bottom:1.75rem;">
+            When living miles away, worrying about a parent slipping or struggling with stairs is overwhelming. We provide trustworthy, certified handyman modifications with complete real-time updates directly to your phone.
+          </p>
+
+          <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:2rem;">
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="color:var(--color-success); font-weight:800; font-size:1.2rem;">✓</span>
+              <span><strong>Background-Checked Craftsmen:</strong> Zero strangers, only certified gentle specialists.</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="color:var(--color-success); font-weight:800; font-size:1.2rem;">✓</span>
+              <span><strong>Before &amp; After Photo Proof:</strong> Sent straight to your Family Portal for review.</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+              <span style="color:var(--color-success); font-weight:800; font-size:1.2rem;">✓</span>
+              <span><strong>Hospital Discharge Ready:</strong> Fast 24-hr turnaround for urgent post-surgery home prep.</span>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:1.25rem; flex-wrap:wrap;">
+            <a href="tel:18005550199" class="btn btn-forest btn-lg" style="background:var(--color-forest); color:#FFFFFF;">
+              📞 Call Care Coordinator
+            </a>
+            <a href="dashboard.html" class="btn btn-secondary btn-lg">
+              Preview Family Portal →
+            </a>
+          </div>
+        </div>
+
+        <!-- Inline Fast Request Card -->
+        <div>
+          <div class="card" style="padding:2.5rem; box-shadow:var(--shadow-xl); border:2px solid var(--color-forest-subtle);">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
+              <div>
+                <span class="badge badge-terracotta">Fast Dispatch</span>
+                <h3 style="font-size:1.6rem; margin-top:0.4rem;">Urgent Safety Consultation</h3>
+              </div>
+              <span style="font-size:2rem;">🛡️</span>
+            </div>
+            <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:1.5rem;">
+              Have a loved one coming home from rehab or hospital? Book priority inspection.
+            </p>
+
+            <form id="inlineHeroBookingForm">
+              <div class="form-group">
+                <label class="form-label" for="ihbSenior">Parent / Senior Name &amp; Address</label>
+                <input type="text" id="ihbSenior" class="form-control" placeholder="e.g. Eleanor Vance, 742 Evergreen Ln" required>
+              </div>
+
+              <div class="grid grid-2" style="gap:0.75rem;">
+                <div class="form-group">
+                  <label class="form-label" for="ihbCaregiver">Your Name (Caregiver)</label>
+                  <input type="text" id="ihbCaregiver" class="form-control" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="ihbPhone">Your Cell Phone</label>
+                  <input type="tel" id="ihbPhone" class="form-control" placeholder="(555) 000-0000" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ihbMod">Urgent Priority Needed</label>
+                <select id="ihbMod" class="form-control" required>
+                  <option value="bath">Immediate Shower Grab Bars (Next Day)</option>
+                  <option value="ramp">Walker/Wheelchair Threshold Ramp</option>
+                  <option value="stairs">Double Staircase Handrails</option>
+                  <option value="audit">Comprehensive 45-Point Safety Audit</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-terracotta btn-lg" style="width:100%;">
+                Request Priority Callback Now
+              </button>
+              <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:0.75rem;">
+                ⏱️ Average coordinator callback time: <strong>14 minutes</strong>.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: "Care at a Glance" Emergency & Fast-Response Support Strip
+       ======================================================================== -->
+  <section class="section-sm section-bg-secondary" style="border-bottom:1px solid var(--color-border);">
+    <div class="container">
+      <div class="grid grid-4" style="gap:1.5rem;">
+        <div style="display:flex; align-items:center; gap:1.15rem;">
+          <div style="width:50px; height:50px; border-radius:var(--radius-full); background:var(--color-terracotta-subtle); color:var(--color-terracotta); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+            ⚡
+          </div>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.05rem;">Same-Day Emergency</div>
+            <div style="color:var(--text-muted); font-size:0.88rem;">Immediate grab bar mounting for acute fall risks</div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:1.15rem;">
+          <div style="width:50px; height:50px; border-radius:var(--radius-full); background:var(--color-forest-subtle); color:var(--color-forest); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+            📱
+          </div>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.05rem;">Direct Caregiver SMS</div>
+            <div style="color:var(--text-muted); font-size:0.88rem;">Live technician arrival, photo notes &amp; sign-off</div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:1.15rem;">
+          <div style="width:50px; height:50px; border-radius:var(--radius-full); background:var(--color-gold-subtle); color:var(--color-gold-dark); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+            🛡️
+          </div>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.05rem;">$2,000,000 Insured</div>
+            <div style="color:var(--text-muted); font-size:0.88rem;">Full liability, workers comp &amp; lifetime mount guarantee</div>
+          </div>
+        </div>
+
+        <div style="display:flex; align-items:center; gap:1.15rem;">
+          <div style="width:50px; height:50px; border-radius:var(--radius-full); background:var(--color-sage-subtle); color:var(--color-forest); display:flex; align-items:center; justify-content:center; font-size:1.5rem; flex-shrink:0;">
+            🤝
+          </div>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.05rem;">Fixed-Price Guarantee</div>
+            <div style="color:var(--text-muted); font-size:0.88rem;">No surprise invoices or hidden labor charges ever</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: The 4-Step "Gentle Care" Service Journey (Timeline)
+       ======================================================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="text-eyebrow">Our Thoughtful Process</span>
+        <h2>The "Gentle Care" Service Journey</h2>
+        <p>From the first phone conversation to the final safety checklist, we keep seniors comfortable and family members fully in the loop.</p>
+      </div>
+
+      <div class="timeline-container">
+        <!-- Step 1 -->
+        <div class="timeline-step">
+          <div class="timeline-marker">1</div>
+          <div class="timeline-content">
+            <span class="badge badge-forest" style="margin-bottom:0.75rem;">Step 1 • Initial Discovery</span>
+            <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Family Consultation &amp; Medical Context</h3>
+            <p>We speak with the family caregiver to understand the senior's mobility baseline, past fall events, walker or wheelchair usage, and upcoming discharge schedules.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-step">
+          <div class="timeline-marker">2</div>
+          <div class="timeline-content">
+            <span class="badge badge-gold" style="margin-bottom:0.75rem;">Step 2 • Gentle Assessment</span>
+            <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Dignity-First In-Home Safety Walkthrough</h3>
+            <p>Our CAPS-certified craftsman visits the home wearing shoe covers. We measure grip heights, test floor slip resistance, and physically customize bar locations to your parent's exact reach.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-step">
+          <div class="timeline-marker">3</div>
+          <div class="timeline-content">
+            <span class="badge badge-terracotta" style="margin-bottom:0.75rem;">Step 3 • Clean Installation</span>
+            <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Commercial-Grade Mounting with Zero Mess</h3>
+            <p>We drill precisely into wall studs, preserving ceramic tile and trim. HEPA dust vacuums run concurrently. Every bar is tested to 500 lbs before being declared safe.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-step">
+          <div class="timeline-marker">4</div>
+          <div class="timeline-content">
+            <span class="badge badge-sage" style="margin-bottom:0.75rem;">Step 4 • Family Sign-Off</span>
+            <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">Family Portal Documentation &amp; Warranty</h3>
+            <p>Photos, inspection notes, and signed safety certs are automatically uploaded to your Family Dashboard. We coach the senior on proper grip techniques and follow up in 14 days.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: Technician Hall of Trust — Vetted Specialist Profiles
+       ======================================================================== -->
+  <section class="section section-bg-secondary">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="text-eyebrow">Our People</span>
+        <h2>Technicians You’d Proudly Welcome to Sunday Dinner</h2>
+        <p>We recruit seasoned craftsmen who pair technical mastery with deep empathy, calm patience, and genuine care for older adults.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Tech 1 -->
+        <div class="tech-card">
+          <div class="tech-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Marcus Vance, Master Craftsman">
+            <span class="tech-badge-overlay">Lead Aging Specialist</span>
+          </div>
+          <div class="tech-info">
+            <h3 class="tech-name">Marcus Vance, CAPS</h3>
+            <div class="tech-role">14 Years Service • NAHB Certified</div>
+            <div class="tech-tags">
+              <span class="badge badge-forest">Background Cleared</span>
+              <span class="badge badge-gold">CPR Certified</span>
+              <span class="badge badge-sage">Dementia Trained</span>
+            </div>
+            <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.25rem;">
+              “I treat every client's home as if it were my own grandmother's. There is no rushed work when it comes to keeping someone safe on their feet.”
+            </p>
+            <button class="btn btn-sm btn-secondary open-booking-modal" style="width:100%;">Request Marcus</button>
+          </div>
+        </div>
+
+        <!-- Tech 2 -->
+        <div class="tech-card">
+          <div class="tech-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Elena Rostova, Safety Engineer">
+            <span class="tech-badge-overlay">Bathroom Safety Lead</span>
+          </div>
+          <div class="tech-info">
+            <h3 class="tech-name">Elena Rostova</h3>
+            <div class="tech-role">9 Years Experience • Occupational Therapy B.S.</div>
+            <div class="tech-tags">
+              <span class="badge badge-forest">Background Cleared</span>
+              <span class="badge badge-terracotta">Ergonomics Pro</span>
+              <span class="badge badge-sage">Zero-Dust Specialist</span>
+            </div>
+            <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.25rem;">
+              “With a background in occupational therapy, I analyze exact body mechanics to position grab rails where seniors naturally reach during a loss of balance.”
+            </p>
+            <button class="btn btn-sm btn-secondary open-booking-modal" style="width:100%;">Request Elena</button>
+          </div>
+        </div>
+
+        <!-- Tech 3 -->
+        <div class="tech-card">
+          <div class="tech-avatar-wrap">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" alt="Sarah Jenkins, Care Coordinator">
+            <span class="tech-badge-overlay">Family Care Coordinator</span>
+          </div>
+          <div class="tech-info">
+            <h3 class="tech-name">Sarah Jenkins, RN</h3>
+            <div class="tech-role">11 Years Clinical Care • Family Liaison</div>
+            <div class="tech-tags">
+              <span class="badge badge-forest">Registered Nurse</span>
+              <span class="badge badge-gold">Discharge Specialist</span>
+              <span class="badge badge-sage">24/7 Hotline</span>
+            </div>
+            <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1.25rem;">
+              “I coordinate directly with adult children and hospital discharge teams to make sure homes are 100% prepared before the patient arrives home.”
+            </p>
+            <button class="btn btn-sm btn-secondary open-booking-modal" style="width:100%;">Speak to Sarah</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 5: Interactive Safety Checklist Quiz
+       ======================================================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="text-eyebrow">Interactive Assessment Tool</span>
+        <h2>Is Your Loved One's Home Fall-Proof?</h2>
+        <p>Answer these 5 quick questions based on your parent's current living environment to receive an instant safety rating and immediate recommended fixes.</p>
+      </div>
+
+      <div class="container-narrow">
+        <div class="quiz-widget">
+          <form id="safetyQuizForm">
+            <!-- Question 1 -->
+            <div class="quiz-question-item">
+              <label class="quiz-checkbox-label">
+                <input type="checkbox" name="hazard" style="display:none;">
+                <span class="custom-checkbox">✓</span>
+                <span>Are there bathroom grab bars mounted into solid studs next to the toilet &amp; shower?</span>
+              </label>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question-item">
+              <label class="quiz-checkbox-label">
+                <input type="checkbox" name="hazard" style="display:none;">
+                <span class="custom-checkbox">✓</span>
+                <span>Do stairways have sturdy, continuous handrails on BOTH sides?</span>
+              </label>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question-item">
+              <label class="quiz-checkbox-label">
+                <input type="checkbox" name="hazard" style="display:none;">
+                <span class="custom-checkbox">✓</span>
+                <span>Are entryway steps and doorway thresholds flush without high lip edges?</span>
+              </label>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-question-item">
+              <label class="quiz-checkbox-label">
+                <input type="checkbox" name="hazard" style="display:none;">
+                <span class="custom-checkbox">✓</span>
+                <span>Is there automatic motion lighting along the pathway from bed to bathroom?</span>
+              </label>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-question-item">
+              <label class="quiz-checkbox-label">
+                <input type="checkbox" name="hazard" style="display:none;">
+                <span class="custom-checkbox">✓</span>
+                <span>Are throw rugs removed or permanently anchored with anti-slip backing?</span>
+              </label>
+            </div>
+          </form>
+
+          <!-- Quiz Results Panel -->
+          <div style="margin-top:2.5rem; padding:2rem; background:var(--bg-primary); border-radius:var(--radius-lg); border:1px solid var(--color-border); text-align:center;">
+            <div style="font-size:0.95rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin-bottom:0.5rem;">Current Home Safety Score</div>
+            <div id="safetyScoreDisplay" style="font-family:var(--font-serif); font-size:3.5rem; color:var(--color-forest); line-height:1; margin-bottom:1rem;">100%</div>
+            <div id="safetyRecommendation" style="font-size:1.1rem; line-height:1.6; margin-bottom:1.5rem;">
+              <span style="color:var(--color-success);">Check the boxes that apply above to calculate your home's vulnerability score.</span>
+            </div>
+            <button class="btn btn-terracotta btn-lg open-booking-modal">Schedule Free Full 45-Point Assessment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 6: Before & After Safety Modifications Showcase + Direct CTA
+       ======================================================================== -->
+  <section class="section section-bg-forest">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="text-eyebrow" style="color:var(--color-gold);">Visual Proof of Care</span>
+        <h2>Before &amp; After Home Transformations</h2>
+        <p>Witness how high-risk bathroom and entryway hazards become elegant, secure, and dignified spaces.</p>
+      </div>
+
+      <div class="grid grid-2" style="gap:3rem; align-items:center;">
+        <div>
+          <!-- Interactive Before/After Visual Representation -->
+          <div class="card" style="overflow:hidden; border:none; box-shadow:var(--shadow-xl);">
+            <div style="position:relative; aspect-ratio:16/10;">
+              <img src="../assets/images/hero-grab-bar.jpg" alt="Completed GoldenYears Safety Modification" style="width:100%; height:100%; object-fit:cover;">
+              <div style="position:absolute; bottom:1rem; left:1rem; background:rgba(41,70,59,0.92); color:#FFFFFF; padding:0.4rem 1rem; border-radius:var(--radius-full); font-size:0.85rem; font-weight:700;">
+                ✓ Completed: Brushed Nickel ADA Grab Rails &amp; Low Barrier
+              </div>
+            </div>
+            <div class="card-body" style="background:var(--bg-secondary);">
+              <h3 style="font-size:1.35rem; margin-bottom:0.5rem;">The Jenkins Family Residence</h3>
+              <p style="font-size:0.92rem; margin-bottom:1rem; color:var(--text-muted);">
+                Installed 3 Moen SecureMount grab bars, raised comfort toilet, and anti-slip floor treatment. Zero damage to porcelain tile. Completed in 3.5 hours.
+              </p>
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700; color:var(--color-forest);">
+                <span>Installation Time: 3.5 hrs</span>
+                <span>Warranty: Lifetime</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <span class="badge badge-gold" style="margin-bottom:1rem;">Family Consultation</span>
+          <h2 style="color:#FFFFFF; font-size:clamp(1.8rem, 3vw, 2.5rem); margin-bottom:1.25rem;">
+            Every Installation Includes Our Triple Guarantee:
+          </h2>
+          <div style="display:flex; flex-direction:column; gap:1.25rem; margin-bottom:2rem;">
+            <div style="display:flex; gap:1rem; align-items:flex-start;">
+              <span style="font-size:1.5rem; line-height:1;">🛡️</span>
+              <div>
+                <h4 style="color:#FFFFFF; margin-bottom:0.25rem;">500-Pound Test Anchor Certification</h4>
+                <p style="color:var(--color-sage-light); font-size:0.95rem;">Every grab bar is mechanically pressure tested before leaving your home.</p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; align-items:flex-start;">
+              <span style="font-size:1.5rem; line-height:1;">🧹</span>
+              <div>
+                <h4 style="color:#FFFFFF; margin-bottom:0.25rem;">Spotless White-Glove Cleanup</h4>
+                <p style="color:var(--color-sage-light); font-size:0.95rem;">All debris, drill dust, and packaging removed. Surfaces sanitized.</p>
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; align-items:flex-start;">
+              <span style="font-size:1.5rem; line-height:1;">📱</span>
+              <div>
+                <h4 style="color:#FFFFFF; margin-bottom:0.25rem;">Live Portal Inspection Report</h4>
+                <p style="color:var(--color-sage-light); font-size:0.95rem;">Digital photos and technician notes immediately uploaded to family portal.</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-terracotta btn-lg open-booking-modal">
+            Schedule In-Home Consultation Today
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universal Booking Modal -->
+  <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle2">
+    <div class="modal-container">
+      <button class="modal-close-btn" aria-label="Close Booking Modal">✕</button>
+      <span class="badge badge-forest" style="margin-bottom:0.75rem;">Fast Response Priority</span>
+      <h3 id="modalTitle2" style="font-size:1.75rem; margin-bottom:0.5rem;">Schedule a Senior Safety Visit</h3>
+      <p style="color:var(--text-muted); font-size:0.95rem; margin-bottom:1.5rem;">A compassionate Care Coordinator will call within 15 minutes to confirm details and technician availability.</p>
+
+      <form id="bookingModalForm">
+        <div class="form-group">
+          <label class="form-label" for="bmName2">Your Name &amp; Relationship *</label>
+          <input type="text" id="bmName2" class="form-control" placeholder="e.g. Sarah Miller (Daughter)" required>
+        </div>
+
+        <div class="grid grid-2" style="gap:1rem;">
+          <div class="form-group">
+            <label class="form-label" for="bmPhone2">Phone Number *</label>
+            <input type="tel" id="bmPhone2" class="form-control" placeholder="(555) 000-0000" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="bmEmail2">Email Address</label>
+            <input type="email" id="bmEmail2" class="form-control" placeholder="sarah@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="bmService2">Primary Safety Need *</label>
+          <select id="bmService2" class="form-control" required>
+            <option value="">Select Service Needed...</option>
+            <option value="grab-bars">Bathroom ADA Grab Bar Installation (500-lb rated)</option>
+            <option value="stair-rails">Continuous Staircase Handrails</option>
+            <option value="ramps">Exterior Wheelchair / Walker Ramp</option>
+            <option value="doors">Door Widening &amp; Ergonomic Lever Handles</option>
+            <option value="audit">Full 45-Point Home Safety &amp; Fall Audit</option>
+            <option value="emergency">Emergency Same-Day Repair / Urgent Fall Hazard</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-terracotta btn-lg" style="width:100%;">Confirm Safety Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to Top">↑</button>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid grid-4" style="gap:2.5rem;">
+        <div>
+          <div class="brand-logo" style="color:#FFFFFF; margin-bottom:1.25rem;">
+            <div class="brand-logo-icon">🌿</div>
+            <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
+          </div>
+          <p style="font-size:0.95rem; margin-bottom:1.25rem;">
+            Dedicated to helping seniors preserve independence, dignity, and joyful living in their private homes through professional aging-in-place modifications.
+          </p>
+          <div style="color:var(--color-gold); font-size:0.9rem;">
+            Certified Aging-in-Place Specialist (CAPS) • NAHB Member
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Safety Services</h4>
+          <div class="footer-links">
+            <a href="service-details.html">ADA Grab Bar Mounting</a>
+            <a href="service-details.html">Continuous Stair Handrails</a>
+            <a href="service-details.html">Custom Access Ramps</a>
+            <a href="service-details.html">Walk-In Shower Conversions</a>
+            <a href="service-details.html">Door Widening &amp; Levers</a>
+            <a href="services.html">45-Point Safety Inspection</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Quick Navigation</h4>
+          <div class="footer-links">
+            <a href="about.html">About Our Mission</a>
+            <a href="pricing.html">Pricing Transparency</a>
+            <a href="dashboard.html">Family Care Portal</a>
+            <a href="blog.html">Aging-in-Place Journal</a>
+            <a href="contact.html">Contact &amp; Rapid Care</a>
+            <a href="auth.html">Family Login / Sign Up</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Emergency &amp; Care Contact</h4>
+          <p style="margin-bottom:0.75rem;">
+            <strong>Care Coordinator Hotline:</strong><br>
+            <a href="tel:18005550199" style="color:var(--color-gold-light); font-size:1.15rem; font-weight:700;">(800) 555-0199</a>
+          </p>
+          <p style="margin-bottom:0.75rem;">
+            <strong>Email:</strong><br>
+            <a href="mailto:care@goldenyearshomecare.com" style="color:var(--color-sage-light);">care@goldenyearshomecare.com</a>
+          </p>
+          <p style="font-size:0.9rem;">
+            Monday – Saturday: 7:30 AM – 7:00 PM<br>
+            24/7 Emergency Fall Hazard Response
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 GoldenYears Home Care LLC. All Rights Reserved. Fully Licensed, Bonded &amp; Insured.
+        </div>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="about.html">Privacy Policy</a>
+          <a href="about.html">Terms of Service</a>
+          <a href="about.html">Accessibility Statement</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

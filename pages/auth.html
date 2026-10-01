@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Portal Access &amp; Registration — GoldenYears Home Care</title>
+  <meta name="description" content="Secure portal access for family members, seniors, and caregivers. Track in-home safety modifications, technician visit logs, and service records.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div>
+        <span>🛡️ <strong>Family Security:</strong> 256-bit encrypted data protection. Zero data sharing.</span>
+      </div>
+      <div class="top-bar-links">
+        <span>Care Coordinator: <a href="tel:18005550199">(800) 555-0199</a></span>
+        <a href="../index.html" style="text-decoration:none;">← Return to Main Website</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Site Navigation -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="../index.html" class="brand-logo" aria-label="GoldenYears Home Care Home">
+        <div class="brand-logo-icon">🌿</div>
+        <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
+      </a>
+
+      <nav class="nav-menu" aria-label="Primary Navigation">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="home2.html" class="nav-link">Home 2</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="pricing.html" class="nav-link">Pricing</a>
+        <a href="blog.html" class="nav-link">Journal</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="dashboard.html" class="nav-link" style="color:var(--color-forest); font-weight:700;">Family Dashboard</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+          <span>🌙</span>
+        </button>
+        <button class="rtl-toggle-btn" aria-label="Toggle RTL or LTR" title="Toggle RTL">RTL</button>
+        <a href="dashboard.html" class="btn btn-terracotta btn-sm">Demo Portal</a>
+        <button class="mobile-toggle" aria-label="Open Navigation Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       SECTION 1: Security & Family Privacy Header
+       ======================================================================== -->
+  <section class="section section-bg-forest text-center" style="padding-top:4rem; padding-bottom:3.5rem;">
+    <div class="container-narrow">
+      <span class="badge badge-gold" style="margin-bottom:1rem;">Protected Family Access</span>
+      <h1 style="color:#FFFFFF; font-size:clamp(2.2rem, 3.5vw, 3.2rem); margin-bottom:1rem;">
+        Welcome to Your Family Care Portal
+      </h1>
+      <p style="color:var(--color-sage-light); font-size:1.15rem; max-width:600px; margin:0 auto 1.5rem auto;">
+        Sign in to review your loved one’s home modifications, view technician visit photos, schedule safety visits, and download safety audit certificates.
+      </p>
+      <div style="display:flex; justify-content:center; gap:1.5rem; color:var(--color-cream-subtle); font-size:0.9rem; flex-wrap:wrap;">
+        <span>🔒 256-Bit SSL Encrypted</span>
+        <span>🛡️ Family Privacy Guaranteed</span>
+        <span>⏱️ 24/7 Portal Access</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 2: Interactive Dual-Tab Authentication Card
+       ======================================================================== -->
+  <section class="section" style="margin-top:-2.5rem;">
+    <div class="container-narrow">
+      <div class="card" style="padding:3rem 2.5rem; background:var(--bg-card); border:1px solid var(--color-border); box-shadow:var(--shadow-xl); border-radius:var(--radius-xl);">
+        
+        <!-- Tab Controls -->
+        <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:2.5rem; border-bottom:1px solid var(--color-border); padding-bottom:1rem;">
+          <button class="btn btn-primary" id="tabBtnLogin" onclick="
+            document.getElementById('authLoginForm').style.display='block';
+            document.getElementById('authRegisterForm').style.display='none';
+            this.className='btn btn-primary';
+            document.getElementById('tabBtnReg').className='btn btn-secondary';
+          ">Sign In to Existing Portal</button>
+          
+          <button class="btn btn-secondary" id="tabBtnReg" onclick="
+            document.getElementById('authLoginForm').style.display='none';
+            document.getElementById('authRegisterForm').style.display='block';
+            this.className='btn btn-primary';
+            document.getElementById('tabBtnLogin').className='btn btn-secondary';
+          ">Register New Family Account</button>
+        </div>
+
+        <!-- FORM 1: Login Form -->
+        <form id="authLoginForm" onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+          <div class="form-group">
+            <label class="form-label" for="loginEmail">Email Address or Phone Number *</label>
+            <input type="text" id="loginEmail" class="form-control" placeholder="e.g. sarah.miller@example.com" value="sarah.miller@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <label class="form-label" for="loginPass" style="margin:0;">Password *</label>
+              <a href="#" style="font-size:0.85rem; color:var(--color-terracotta);" onclick="event.preventDefault(); window.showToast('Reset password link sent to your registered email!');">Forgot password?</a>
+            </div>
+            <input type="password" id="loginPass" class="form-control" value="••••••••••••" required>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.5rem;">
+            <input type="checkbox" id="rememberMe" checked style="width:18px; height:18px;">
+            <label for="rememberMe" style="font-size:0.92rem; color:var(--text-muted); cursor:pointer;">Keep me signed in on this safe family device</label>
+          </div>
+
+          <button type="submit" class="btn btn-terracotta btn-lg" style="width:100%;">
+            Enter Family Dashboard →
+          </button>
+          
+          <div style="text-align:center; margin-top:1.5rem; font-size:0.92rem; color:var(--text-muted);">
+            Want to test the live portal demo? Click "Enter Family Dashboard" above!
+          </div>
+        </form>
+
+        <!-- FORM 2: Register Form (Hidden initially) -->
+        <form id="authRegisterForm" style="display:none;" onsubmit="event.preventDefault(); window.showToast('Family account created! Redirecting to setup...', 'success'); setTimeout(() => window.location.href='dashboard.html', 1200);">
+          <div class="grid grid-2" style="gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Your Name (Caregiver) *</label>
+              <input type="text" class="form-control" placeholder="e.g. David Sterling" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Relationship *</label>
+              <select class="form-control" required>
+                <option>Son / Daughter</option>
+                <option>Senior Homeowner (Self)</option>
+                <option>Spouse / Partner</option>
+                <option>Guardian / Care Manager</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Senior / Parent’s Full Name *</label>
+            <input type="text" class="form-control" placeholder="e.g. Eleanor Vance" required>
+          </div>
+
+          <div class="grid grid-2" style="gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Your Cell Phone *</label>
+              <input type="tel" class="form-control" placeholder="(555) 000-0000" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Email *</label>
+              <input type="email" class="form-control" placeholder="david@example.com" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Create a Strong Password *</label>
+            <input type="password" class="form-control" placeholder="At least 8 characters..." required>
+          </div>
+
+          <button type="submit" class="btn btn-forest btn-lg" style="width:100%; background:var(--color-forest); color:#FFFFFF;">
+            Create Free Family Account
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 3: Role Selector ("Who Are You Registering For?")
+       ======================================================================== -->
+  <section class="section section-bg-secondary">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="text-eyebrow">Tailored Experience</span>
+        <h2>Choose the Account Type that Fits Your Role</h2>
+        <p>We customize your portal dashboard based on who is managing home safety.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="feature-card" style="text-align:center;">
+          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;">👨‍👧</div>
+          <h3 style="font-size:1.35rem;">Adult Child Caregiver</h3>
+          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
+            For sons and daughters managing parent modifications remotely. Features photo sign-offs, live SMS alerts, and online bill pay.
+          </p>
+          <span class="badge badge-forest">Most Popular</span>
+        </div>
+
+        <div class="feature-card" style="text-align:center;">
+          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;">🏡</div>
+          <h3 style="font-size:1.35rem;">Independent Senior</h3>
+          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
+            Designed with high-contrast text, large touch buttons, and direct phone contact to your personal technician.
+          </p>
+          <span class="badge badge-terracotta">Senior Friendly</span>
+        </div>
+
+        <div class="feature-card" style="text-align:center;">
+          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;">🩺</div>
+          <h3 style="font-size:1.35rem;">Healthcare Case Worker</h3>
+          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
+            For occupational therapists, hospital discharge planners, and social workers needing rapid certified bids and safety verification.
+          </p>
+          <span class="badge badge-gold">Clinical Access</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 4: Senior-Friendly Big Button Login Options
+       ======================================================================== -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <div class="section-header text-center">
+        <span class="text-eyebrow">Simple &amp; Painless</span>
+        <h2>Fast, Password-Free Login Options</h2>
+        <p>Don't want to memorize another password? Use our quick one-click verification methods.</p>
+      </div>
+
+      <div class="grid grid-2" style="gap:1.5rem;">
+        <button class="btn btn-white btn-lg" style="border:1.5px solid var(--color-border); padding:1.5rem; justify-content:flex-start; text-align:left;" onclick="window.showToast('📲 6-digit SMS verification code texted to your phone!');">
+          <span style="font-size:2rem; margin-right:1rem;">📲</span>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.1rem;">Text Me a Login Code</div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">One-time SMS code sent straight to your cell phone</div>
+          </div>
+        </button>
+
+        <button class="btn btn-white btn-lg" style="border:1.5px solid var(--color-border); padding:1.5rem; justify-content:flex-start; text-align:left;" onclick="window.showToast('✉️ Secure Magic Link sent to your email! Click to enter instantly.');">
+          <span style="font-size:2rem; margin-right:1rem;">✨</span>
+          <div>
+            <div style="font-weight:700; color:var(--text-heading); font-size:1.1rem;">Email Magic Link</div>
+            <div style="font-size:0.85rem; color:var(--text-muted);">Instant password-free one-click sign-in link</div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 5: Reassuring Family Peace-of-Mind Quote Showcase
+       ======================================================================== -->
+  <section class="section section-bg-forest">
+    <div class="container-narrow text-center">
+      <div style="font-size:3rem; color:var(--color-gold); font-family:var(--font-serif); line-height:1; margin-bottom:1rem;">“</div>
+      <p style="font-size:1.35rem; color:#FFFFFF; font-style:italic; line-height:1.7; margin-bottom:1.5rem;">
+        “Logging in and seeing the photos of mom's completed bathroom modifications gave our family an enormous sense of relief. We didn't have to wonder if it was done correctly—the 500-lb test sign-off was right there in the portal.”
+      </p>
+      <div style="color:var(--color-gold); font-weight:700; font-size:1.1rem;">— Rebecca Thorne</div>
+      <div style="color:var(--color-sage-light); font-size:0.9rem;">Daughter &amp; Family Portal User • Austin, TX</div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SECTION 6: Account Support Helpdesk with Toll-Free Assistance
+       ======================================================================== -->
+  <section class="section">
+    <div class="container text-center">
+      <div style="background:var(--bg-secondary); border-radius:var(--radius-xl); padding:3.5rem; border:1px solid var(--color-border); max-width:750px; margin:0 auto;">
+        <span class="badge badge-terracotta" style="margin-bottom:1rem;">Need Help Signing In?</span>
+        <h2 style="font-size:2rem; margin-bottom:1rem;">Our Care Concierge Can Help Over the Phone</h2>
+        <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1.75rem;">
+          If you or your parent are having trouble navigating the portal or forgotten your credentials, our friendly support team will assist you in seconds.
+        </p>
+        <a href="tel:18005550199" class="btn btn-primary btn-lg">Call Support: (800) 555-0199</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" aria-label="Back to Top">↑</button>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="grid grid-4" style="gap:2.5rem;">
+        <div>
+          <div class="brand-logo" style="color:#FFFFFF; margin-bottom:1.25rem;">
+            <div class="brand-logo-icon">🌿</div>
+            <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
+          </div>
+          <p style="font-size:0.95rem; margin-bottom:1.25rem;">
+            Dedicated to helping seniors preserve independence, dignity, and joyful living in their private homes through professional aging-in-place modifications.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Safety Services</h4>
+          <div class="footer-links">
+            <a href="service-details.html">ADA Grab Bar Mounting</a>
+            <a href="service-details.html">Continuous Stair Handrails</a>
+            <a href="service-details.html">Custom Access Ramps</a>
+            <a href="services.html">45-Point Safety Inspection</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Quick Navigation</h4>
+          <div class="footer-links">
+            <a href="about.html">About Our Mission</a>
+            <a href="pricing.html">Pricing Transparency</a>
+            <a href="dashboard.html">Family Care Portal</a>
+            <a href="contact.html">Contact &amp; Rapid Care</a>
+          </div>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom:1.25rem;">Emergency &amp; Care Contact</h4>
+          <p style="margin-bottom:0.75rem;">
+            <strong>Care Coordinator Hotline:</strong><br>
+            <a href="tel:18005550199" style="color:var(--color-gold-light); font-size:1.15rem; font-weight:700;">(800) 555-0199</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 GoldenYears Home Care LLC. All Rights Reserved.</div>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="about.html">Privacy Policy</a>
+          <a href="about.html">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
