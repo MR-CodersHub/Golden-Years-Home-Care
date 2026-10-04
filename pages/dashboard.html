@@ -5,30 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Care Portal &amp; Monitoring Dashboard — GoldenYears Home Care</title>
   <meta name="description" content="Dedicated portal for adult children and caregivers to track parent home modifications, upcoming safety visits, technician notes, invoices, and safety audits.">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style id="profile-menu-critical">
+/* Critical: account dropdown in site header (inlined so markup never desyncs from cached CSS) */
+.profile-menu{position:relative}
+.profile-menu .icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
+.profile-menu .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.profile-toggle-btn{width:40px;height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background-color:var(--bg-tertiary,#f4f1ea);color:var(--text-main,#2b2b2b);border:1px solid var(--color-border,#e2ddd2);font-size:1.1rem;transition:background-color .2s,color .2s,border-color .2s;cursor:pointer}
+.profile-toggle-btn:hover,.profile-menu.active .profile-toggle-btn{background-color:var(--color-forest,#2e4b3f);color:#fff;border-color:var(--color-forest,#2e4b3f)}
+.profile-toggle-btn .icon{width:19px;height:19px}
+.profile-dropdown{position:absolute;top:calc(100% + 10px);right:0;min-width:240px;background-color:var(--bg-card,#ffffff);border:1px solid var(--color-border,#e2ddd2);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;z-index:1001;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s}
+.profile-menu.active .profile-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.profile-link{display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;border-radius:8px;font-size:.93rem;font-weight:600;color:var(--text-main,#2b2b2b);text-decoration:none;transition:background-color .2s,color .2s}
+.profile-link:hover{background-color:var(--color-forest-subtle,#e7efe9);color:var(--color-forest,#2e4b3f)}
+.profile-link .icon{width:18px;height:18px}
+.profile-divider{height:1px;background-color:var(--color-border,#e2ddd2);margin:.4rem .5rem}
+[dir="rtl"] .profile-dropdown{right:auto;left:0}
+</style>
 </head>
 <body style="background:var(--bg-primary);">
-
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-inner">
-      <div>
-        <span>🛡️ <strong>Family Care Portal:</strong> Connected to Eleanor Vance Residence (Plano, TX)</span>
-      </div>
-      <div class="top-bar-links">
-        <span>Assigned Care Coordinator: Sarah Jenkins, RN • <a href="tel:18005550199">(800) 555-0199</a></span>
-        <a href="auth.html" style="text-decoration:none;">Log Out (Sarah Miller)</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Sticky Site Navigation -->
   <header class="site-header">
     <div class="container navbar">
       <a href="../index.html" class="brand-logo" aria-label="GoldenYears Home Care Home">
-        <div class="brand-logo-icon">🌿</div>
+        <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
         <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
       </a>
 
@@ -44,12 +47,23 @@
       </nav>
 
       <div class="nav-actions">
+        <div class="profile-menu">
+          <button class="profile-toggle-btn" aria-label="User account menu" aria-haspopup="true" aria-expanded="false" title="Account">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          </button>
+          <div class="profile-dropdown" role="menu" aria-label="Account">
+            <a href="dashboard.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span>User Dashboard</span></a>
+            <a href="admin.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Admin Dashboard</span></a>
+            <div class="profile-divider"></div>
+            <a href="auth.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg></span><span>Login / Sign Up</span></a>
+          </div>
+        </div>
         <button class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
-          <span>🌙</span>
+          <span class="icon" data-theme-icon="moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
         </button>
         <button class="rtl-toggle-btn" aria-label="Toggle RTL or LTR" title="Toggle RTL">RTL</button>
         <a href="#schedule" class="btn btn-terracotta btn-sm" onclick="document.querySelector('.dashboard-nav-item[data-section=\'sec-schedule\']').click();">Schedule Visit</a>
-        <button class="mobile-toggle" aria-label="Open Navigation Menu">☰</button>
+        <button class="mobile-toggle" aria-label="Open Navigation Menu"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></span></button>
       </div>
     </div>
   </header>
@@ -61,7 +75,7 @@
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
       <div style="display:flex; align-items:center; gap:1.25rem;">
         <div style="width:60px; height:60px; border-radius:var(--radius-full); background:var(--color-forest-subtle); color:var(--color-forest); display:flex; align-items:center; justify-content:center; font-size:1.8rem; border:2px solid var(--color-sage);">
-          👵
+          <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
         </div>
         <div>
           <div style="display:flex; align-items:center; gap:0.6rem;">
@@ -75,7 +89,7 @@
       </div>
 
       <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
-        <a href="tel:18005550199" class="btn btn-sm btn-secondary">📞 Call Tech Marcus</a>
+        <a href="tel:18005550199" class="btn btn-sm btn-secondary"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span> Call Tech Marcus</a>
         <button class="btn btn-sm btn-terracotta" onclick="document.querySelector('.dashboard-nav-item[data-section=\'sec-schedule\']').click();">
           + Book New Safety Visit
         </button>
@@ -90,7 +104,7 @@
     <div class="grid grid-4">
       <div class="metric-card">
         <div class="metric-icon" style="background:var(--color-forest-subtle); color:var(--color-forest);">
-          🛡️
+          <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         </div>
         <div>
           <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Home Safety Score</div>
@@ -101,7 +115,7 @@
 
       <div class="metric-card">
         <div class="metric-icon" style="background:var(--color-terracotta-subtle); color:var(--color-terracotta);">
-          🔧
+          <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>
         </div>
         <div>
           <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Modifications</div>
@@ -112,7 +126,7 @@
 
       <div class="metric-card">
         <div class="metric-icon" style="background:var(--color-gold-subtle); color:var(--color-gold-dark);">
-          📅
+          <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span>
         </div>
         <div>
           <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Next Safety Visit</div>
@@ -123,7 +137,7 @@
 
       <div class="metric-card">
         <div class="metric-icon" style="background:var(--color-sage-subtle); color:var(--color-forest);">
-          💳
+          <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="22" height="16" x="1" y="4" rx="2"/><line x1="1" x2="23" y1="10" y2="10"/></svg></span>
         </div>
         <div>
           <div style="font-size:0.85rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Account Invoices</div>
@@ -148,37 +162,37 @@
           </div>
 
           <div class="dashboard-nav-item active" data-section="sec-overview">
-            <span>📊</span> <span>Dashboard Overview</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg></span></span> <span>Dashboard Overview</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-schedule">
-            <span>📅</span> <span>Schedule Safety Visits</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg></span></span> <span>Schedule Safety Visits</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-upcoming">
-            <span>⏰</span> <span>Upcoming Visits</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span></span> <span>Upcoming Visits</span>
             <span class="badge badge-terracotta">1 Active</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-completed">
-            <span>✅</span> <span>Completed Modifications</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span></span> <span>Completed Modifications</span>
             <span class="badge badge-forest">7</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-tech-history">
-            <span>👷</span> <span>Technician Visit History</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span></span> <span>Technician Visit History</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-payments">
-            <span>💳</span> <span>Payment Management</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="22" height="16" x="1" y="4" rx="2"/><line x1="1" x2="23" y1="10" y2="10"/></svg></span></span> <span>Payment Management</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-records">
-            <span>📑</span> <span>Service Records &amp; Audits</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span></span> <span>Service Records &amp; Audits</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-notifications">
-            <span>🔔</span> <span>Notifications</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span></span> <span>Notifications</span>
             <span class="badge badge-gold notif-count-badge">2</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-profile">
-            <span>👤</span> <span>Family Profile</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span></span> <span>Family Profile</span>
           </div>
           <div class="dashboard-nav-item" data-section="sec-settings">
-            <span>⚙️</span> <span>Portal Settings</span>
+            <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span></span> <span>Portal Settings</span>
           </div>
         </aside>
 
@@ -193,7 +207,7 @@
                 <p>Real-time home modification updates for Eleanor Vance.</p>
               </div>
               <button class="btn btn-sm btn-secondary" onclick="window.showToast('Safety report PDF generated! Download started.');">
-                📥 Download Full Report (PDF)
+                <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Download Full Report (PDF)
               </button>
             </div>
 
@@ -512,7 +526,7 @@
                     <td>2x Grab Bars + Hardware &amp; Installation</td>
                     <td><strong>$289.00</strong></td>
                     <td class="invoice-status"><span class="badge badge-success">Paid in Full</span></td>
-                    <td><button class="btn btn-sm btn-secondary" onclick="window.showToast('📥 Downloading PDF receipt #INV-8821...');">Receipt</button></td>
+                    <td><button class="btn btn-sm btn-secondary" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading PDF receipt #INV-8821...');">Receipt</button></td>
                   </tr>
                   <tr>
                     <td>#INV-8740</td>
@@ -520,7 +534,7 @@
                     <td>Staircase Handrail Birch Mount</td>
                     <td><strong>$450.00</strong></td>
                     <td class="invoice-status"><span class="badge badge-success">Paid in Full</span></td>
-                    <td><button class="btn btn-sm btn-secondary" onclick="window.showToast('📥 Downloading PDF receipt #INV-8740...');">Receipt</button></td>
+                    <td><button class="btn btn-sm btn-secondary" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading PDF receipt #INV-8740...');">Receipt</button></td>
                   </tr>
                   <tr>
                     <td>#INV-8902</td>
@@ -552,7 +566,7 @@
                   <h4 style="margin-bottom:0.25rem;">45-Point Annual Safety Audit Report (Full PDF)</h4>
                   <div style="font-size:0.85rem; color:var(--text-muted);">Completed Sept 20, 2026 • Auditor: Robert Sterling, CAPS</div>
                 </div>
-                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('📥 Downloading 45-Point Audit Report (PDF)...', 'success');">
+                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading 45-Point Audit Report (PDF)...', 'success');">
                   Download PDF (2.4 MB)
                 </button>
               </div>
@@ -562,7 +576,7 @@
                   <h4 style="margin-bottom:0.25rem;">Lifetime Structural Stud-Mount Warranty Certificate</h4>
                   <div style="font-size:0.85rem; color:var(--text-muted);">Certified coverage for all installed grab rails • Policy #WARR-9941</div>
                 </div>
-                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('📥 Downloading Lifetime Warranty Certificate (PDF)...', 'success');">
+                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading Lifetime Warranty Certificate (PDF)...', 'success');">
                   Download Certificate (1.1 MB)
                 </button>
               </div>
@@ -572,7 +586,7 @@
                   <h4 style="margin-bottom:0.25rem;">HCPCS Medical Insurance Reimbursement Invoice</h4>
                   <div style="font-size:0.85rem; color:var(--text-muted);">Itemized contractor invoice with medical necessity codes for Medicare/VA</div>
                 </div>
-                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('📥 Downloading Insurance Claim Statement (PDF)...', 'success');">
+                <button class="btn btn-sm btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading Insurance Claim Statement (PDF)...', 'success');">
                   Download Statement (850 KB)
                 </button>
               </div>
@@ -734,7 +748,7 @@
         <div>
           <!-- Emergency Quick Access Card -->
           <div style="background:var(--color-forest); color:#FFFFFF; border-radius:var(--radius-xl); padding:2.5rem; box-shadow:var(--shadow-lg);">
-            <div style="font-size:2.5rem; margin-bottom:0.75rem;">🚨</div>
+            <div style="font-size:2.5rem; margin-bottom:0.75rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span></div>
             <h3 style="color:#FFFFFF; font-size:1.6rem; margin-bottom:0.5rem;">Need Urgent Dispatch for Mom?</h3>
             <p style="color:var(--color-sage-light); font-size:0.95rem; margin-bottom:1.5rem;">
               If your loved one had a fall or is discharging early from rehab, our emergency on-call team will prioritize your house within 24 hours.
@@ -764,28 +778,28 @@
 
       <div class="grid grid-4" style="text-align:left;">
         <div class="card" style="padding:1.75rem;">
-          <div style="font-size:2rem; margin-bottom:0.5rem;">🚿</div>
+          <div style="font-size:2rem; margin-bottom:0.5rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></span></div>
           <h4 style="margin-bottom:0.25rem;">Bathroom: 100%</h4>
           <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">2 grab bars + comfort toilet. Zero open hazards.</p>
           <span class="badge badge-success">Optimized</span>
         </div>
 
         <div class="card" style="padding:1.75rem;">
-          <div style="font-size:2rem; margin-bottom:0.5rem;">🪜</div>
+          <div style="font-size:2rem; margin-bottom:0.5rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v20"/><path d="M16 2v20"/><path d="M8 6h8"/><path d="M8 12h8"/><path d="M8 18h8"/></svg></span></div>
           <h4 style="margin-bottom:0.25rem;">Staircase: 95%</h4>
           <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Continuous dual railings installed. Solid mount.</p>
           <span class="badge badge-success">Secured</span>
         </div>
 
         <div class="card" style="padding:1.75rem;">
-          <div style="font-size:2rem; margin-bottom:0.5rem;">🚪</div>
+          <div style="font-size:2rem; margin-bottom:0.5rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/></svg></span></div>
           <h4 style="margin-bottom:0.25rem;">Entryway: 90%</h4>
           <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Threshold beveled ramp installed. Exterior sensor active.</p>
           <span class="badge badge-forest">Safe</span>
         </div>
 
         <div class="card" style="padding:1.75rem;">
-          <div style="font-size:2rem; margin-bottom:0.5rem;">🛏️</div>
+          <div style="font-size:2rem; margin-bottom:0.5rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></span></div>
           <h4 style="margin-bottom:0.25rem;">Bedroom: 88%</h4>
           <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.75rem;">Nightlights scheduled for install tomorrow.</p>
           <span class="badge badge-warning">Upgrade Queued</span>
@@ -816,7 +830,7 @@
   </section>
 
   <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Back to Top">↑</button>
+  <button class="back-to-top" aria-label="Back to Top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></span></button>
 
   <!-- Site Footer -->
   <footer class="site-footer">
@@ -824,7 +838,7 @@
       <div class="grid grid-4" style="gap:2.5rem;">
         <div>
           <div class="brand-logo" style="color:#FFFFFF; margin-bottom:1.25rem;">
-            <div class="brand-logo-icon">🌿</div>
+            <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
             <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
           </div>
           <p style="font-size:0.95rem; margin-bottom:1.25rem;">

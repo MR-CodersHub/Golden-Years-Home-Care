@@ -5,30 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portal Maintenance &amp; Coming Soon — GoldenYears Home Care</title>
   <meta name="description" content="We are performing essential safety upgrades to our family digital care portal. Our field technicians remain fully active 24/7 for urgent home modifications.">
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/style.css?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style id="profile-menu-critical">
+/* Critical: account dropdown in site header (inlined so markup never desyncs from cached CSS) */
+.profile-menu{position:relative}
+.profile-menu .icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
+.profile-menu .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.profile-toggle-btn{width:40px;height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background-color:var(--bg-tertiary,#f4f1ea);color:var(--text-main,#2b2b2b);border:1px solid var(--color-border,#e2ddd2);font-size:1.1rem;transition:background-color .2s,color .2s,border-color .2s;cursor:pointer}
+.profile-toggle-btn:hover,.profile-menu.active .profile-toggle-btn{background-color:var(--color-forest,#2e4b3f);color:#fff;border-color:var(--color-forest,#2e4b3f)}
+.profile-toggle-btn .icon{width:19px;height:19px}
+.profile-dropdown{position:absolute;top:calc(100% + 10px);right:0;min-width:240px;background-color:var(--bg-card,#ffffff);border:1px solid var(--color-border,#e2ddd2);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;z-index:1001;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s}
+.profile-menu.active .profile-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
+.profile-link{display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;border-radius:8px;font-size:.93rem;font-weight:600;color:var(--text-main,#2b2b2b);text-decoration:none;transition:background-color .2s,color .2s}
+.profile-link:hover{background-color:var(--color-forest-subtle,#e7efe9);color:var(--color-forest,#2e4b3f)}
+.profile-link .icon{width:18px;height:18px}
+.profile-divider{height:1px;background-color:var(--color-border,#e2ddd2);margin:.4rem .5rem}
+[dir="rtl"] .profile-dropdown{right:auto;left:0}
+</style>
 </head>
 <body>
-
-  <!-- Top Announcement Bar -->
-  <div class="top-bar">
-    <div class="container top-bar-inner">
-      <div>
-        <span>🛡️ <strong>Field Operations Active:</strong> Handyman technicians in the field today across all counties.</span>
-      </div>
-      <div class="top-bar-links">
-        <span>Urgent Care Coordinator: <a href="tel:18005550199">(800) 555-0199</a></span>
-        <a href="../index.html" style="text-decoration:none;">Main Website →</a>
-      </div>
-    </div>
-  </div>
 
   <!-- Sticky Site Navigation -->
   <header class="site-header">
     <div class="container navbar">
       <a href="../index.html" class="brand-logo" aria-label="GoldenYears Home Care Home">
-        <div class="brand-logo-icon">🌿</div>
+        <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
         <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
       </a>
 
@@ -44,12 +47,23 @@
       </nav>
 
       <div class="nav-actions">
+        <div class="profile-menu">
+          <button class="profile-toggle-btn" aria-label="User account menu" aria-haspopup="true" aria-expanded="false" title="Account">
+            <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+          </button>
+          <div class="profile-dropdown" role="menu" aria-label="Account">
+            <a href="dashboard.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><span>User Dashboard</span></a>
+            <a href="admin.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Admin Dashboard</span></a>
+            <div class="profile-divider"></div>
+            <a href="auth.html" class="profile-link" role="menuitem"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg></span><span>Login / Sign Up</span></a>
+          </div>
+        </div>
         <button class="theme-toggle-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
-          <span>🌙</span>
+          <span class="icon" data-theme-icon="moon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
         </button>
         <button class="rtl-toggle-btn" aria-label="Toggle RTL or LTR" title="Toggle RTL">RTL</button>
         <a href="tel:18005550199" class="btn btn-terracotta btn-sm">Call (800) 555-0199</a>
-        <button class="mobile-toggle" aria-label="Open Navigation Menu">☰</button>
+        <button class="mobile-toggle" aria-label="Open Navigation Menu"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></span></button>
       </div>
     </div>
   </header>
@@ -80,7 +94,7 @@
   <section class="section-sm" style="background:var(--color-terracotta); color:#FFFFFF; margin-top:-1.5rem; position:relative; z-index:20; border-radius:var(--radius-lg); max-width:1100px; margin-left:auto; margin-right:auto; box-shadow:var(--shadow-lg);">
     <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1.25rem;">
       <div style="display:flex; align-items:center; gap:1.25rem;">
-        <span style="font-size:2.5rem;">⚡</span>
+        <span style="font-size:2.5rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span></span>
         <div>
           <h3 style="color:#FFFFFF; font-size:1.35rem; margin-bottom:0.2rem;">Our Field Technicians Are Actively Working!</h3>
           <p style="color:#FFEAE2; margin:0; font-size:0.95rem;">Maintenance affects our web server only. Emergency grab bars and repairs are operating normally.</p>
@@ -213,7 +227,7 @@
   </section>
 
   <!-- Back to Top Button -->
-  <button class="back-to-top" aria-label="Back to Top">↑</button>
+  <button class="back-to-top" aria-label="Back to Top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></span></button>
 
   <!-- Site Footer -->
   <footer class="site-footer">
@@ -221,7 +235,7 @@
       <div class="grid grid-4" style="gap:2.5rem;">
         <div>
           <div class="brand-logo" style="color:#FFFFFF; margin-bottom:1.25rem;">
-            <div class="brand-logo-icon">🌿</div>
+            <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
             <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
           </div>
           <p style="font-size:0.95rem; margin-bottom:1.25rem;">

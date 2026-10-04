@@ -88,7 +88,7 @@ function initScheduleForm() {
     }
 
     if (window.showToast) {
-      window.showToast('✅ Safety visit scheduled! Confirmed in your Upcoming Visits tab.', 'success');
+      window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span> Safety visit scheduled! Confirmed in your Upcoming Visits tab.', 'success');
     }
 
     scheduleForm.reset();
@@ -140,7 +140,7 @@ function initPaymentSimulator() {
             statusCell.innerHTML = '<span class="badge badge-success">Paid in Full</span>';
           }
         }
-        btn.outerHTML = '<span style="font-weight:600; color:var(--color-success); font-size:0.9rem;">✓ Settled</span>';
+        btn.outerHTML = '<span style="font-weight:600; color:var(--color-success); font-size:0.9rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Settled</span>';
         if (window.showToast) {
           window.showToast(`Invoice #${invoiceId} settled successfully! Receipt emailed to family.`, 'success');
         }

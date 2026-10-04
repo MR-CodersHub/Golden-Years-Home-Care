@@ -462,35 +462,8 @@ p:last-child {
 .badge-warning { background-color: rgba(217, 130, 43, 0.12); color: var(--color-warning); }
 
 /* --------------------------------------------------------------------------
-   Site Top Announcement Bar & Navigation Header
+   Site Navigation Header
    -------------------------------------------------------------------------- */
-.top-bar {
-  background-color: var(--color-forest-dark);
-  color: var(--color-cream);
-  font-size: 0.88rem;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
-.top-bar a {
-  color: var(--color-gold-light);
-  font-weight: 600;
-}
-.top-bar a:hover {
-  text-decoration: underline;
-}
-.top-bar .top-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-.top-bar-links {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
 .site-header {
   position: sticky;
   top: 0;
@@ -631,6 +604,85 @@ p:last-child {
   background-color: var(--color-forest);
   color: #FFFFFF;
   border-color: var(--color-forest);
+}
+
+/* User Profile Menu (Account dropdown in header) */
+.profile-menu {
+  position: relative;
+}
+.profile-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-tertiary);
+  color: var(--text-main);
+  border: 1px solid var(--color-border);
+  font-size: 1.1rem;
+  transition: all var(--trans-fast);
+  cursor: pointer;
+}
+.profile-toggle-btn:hover,
+.profile-menu.active .profile-toggle-btn {
+  background-color: var(--color-forest);
+  color: #FFFFFF;
+  border-color: var(--color-forest);
+}
+.profile-toggle-btn svg {
+  width: 19px;
+  height: 19px;
+}
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 240px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: 0.5rem;
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all var(--trans-fast);
+}
+.profile-menu.active .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.93rem;
+  font-weight: 600;
+  color: var(--text-main);
+  transition: all var(--trans-fast);
+}
+.profile-link:hover {
+  background-color: var(--color-forest-subtle);
+  color: var(--color-forest);
+}
+.profile-link svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.profile-divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 0.4rem 0.5rem;
+}
+[dir="rtl"] .profile-dropdown {
+  right: auto;
+  left: 0;
 }
 
 .mobile-toggle {
@@ -1741,4 +1793,160 @@ textarea.form-control {
   .dashboard-content {
     padding: 1.5rem;
   }
+}
+
+/* --------------------------------------------------------------------------
+   Icon System — SVG replacements for emojis (professional, accessible)
+   All decorative icons inherit currentColor. Sizing is context-aware.
+   -------------------------------------------------------------------------- */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.icon-inline {
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.35em;
+  vertical-align: -0.18em;
+}
+.icon-star-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  color: var(--color-gold);
+}
+.icon-star-wrap .icon {
+  width: 1.1em;
+  height: 1.1em;
+}
+.icon-star-wrap .icon svg {
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+/* Brand logo leaf */
+.brand-logo-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Theme / nav buttons */
+.theme-toggle-btn svg {
+  width: 19px;
+  height: 19px;
+}
+.mobile-toggle svg,
+.modal-close-btn svg,
+.back-to-top svg,
+.slider-arrow-btn svg,
+.faq-toggle-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.mobile-toggle,
+.modal-close-btn,
+.back-to-top,
+.slider-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-close-btn {
+  font-size: 1rem;
+}
+.back-to-top {
+  font-size: 1rem;
+}
+.slider-arrow-btn {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+/* Feature / metric boxes */
+.feature-icon-box svg {
+  width: 30px;
+  height: 30px;
+}
+.metric-icon svg {
+  width: 26px;
+  height: 26px;
+}
+.metric-icon,
+.feature-icon-box,
+.brand-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.metric-icon .icon,
+.feature-icon-box .icon {
+  width: auto;
+  height: auto;
+}
+
+/* Checklist + quiz checks */
+.checklist-icon svg {
+  width: 20px;
+  height: 20px;
+}
+.custom-checkbox svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0;
+}
+input[type="checkbox"]:checked + .custom-checkbox svg {
+  opacity: 1;
+}
+.custom-checkbox {
+  font-size: 0;
+}
+
+/* Buttons with icons */
+.btn svg {
+  width: 1.1em;
+  height: 1.1em;
+}
+.btn .icon-inline {
+  margin-right: 0.45em;
+}
+
+/* Dashboard nav + misc inline contexts */
+.dashboard-nav-item svg {
+  width: 18px;
+  height: 18px;
+}
+.dashboard-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.feature-icon-box .icon-inline,
+.metric-icon .icon-inline,
+.brand-logo-icon .icon-inline,
+.theme-toggle-btn .icon-inline {
+  margin-right: 0;
+}
+
+/* Toast icons */
+.toast svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
