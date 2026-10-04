@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
   initProfileDropdown();
+  initDashboardSidebar();
   initHeroSlider();
   initRoomTabs();
   initQuizChecklist();
@@ -167,6 +168,77 @@ function initProfileDropdown() {
   // bfcache (Back/Forward) restores the DOM as-is without re-running scripts,
   // so always reset the menu when the page is shown.
   window.addEventListener('pageshow', closeAll);
+}
+
+/* --------------------------------------------------------------------------
+   3c. Dashboard Sidebar (Collapse on Desktop, Off-Canvas on Mobile)
+   -------------------------------------------------------------------------- */
+function initDashboardSidebar() {
+  const layout = document.querySelector('.dashboard-layout');
+  if (!layout) return;
+  const sidebar = layout.querySelector('.dashboard-sidebar');
+  if (!sidebar) return;
+
+  // Shared overlay (created once)
+  let overlay = document.querySelector('.sidebar-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+  }
+
+  const isMobile = () => window.matchMedia('(max-width: 1024px)').matches;
+
+  function openMobile() {
+    layout.classList.add('sidebar-open');
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMobile() {
+    layout.classList.remove('sidebar-open');
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Restore persisted desktop rail state
+  try {
+    if (!isMobile() && localStorage.getItem('gy_sidebar_collapsed') === '1') {
+      layout.classList.add('sidebar-collapsed');
+    }
+  } catch (err) {}
+
+  layout.querySelectorAll('.sidebar-collapse-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const collapsed = layout.classList.toggle('sidebar-collapsed');
+      try {
+        localStorage.setItem('gy_sidebar_collapsed', collapsed ? '1' : '0');
+      } catch (err) {}
+      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    });
+  });
+
+  layout.querySelectorAll('.sidebar-open-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openMobile();
+    });
+  });
+
+  overlay.addEventListener('click', closeMobile);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMobile();
+  });
+
+  // After choosing a destination on mobile, slide the panel away
+  sidebar.querySelectorAll('.dashboard-nav-item').forEach(item => {
+    item.addEventListener('click', () => {
+      if (isMobile()) closeMobile();
+    });
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isMobile()) closeMobile();
+  });
 }
 
 /* --------------------------------------------------------------------------

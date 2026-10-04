@@ -43,8 +43,7 @@
         <a href="pricing.html" class="nav-link">Pricing</a>
         <a href="blog.html" class="nav-link">Journal</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        <a href="dashboard.html" class="nav-link" style="color:var(--color-forest); font-weight:700;">Family Dashboard</a>
-      </nav>
+              </nav>
 
       <div class="nav-actions">
         <div class="profile-menu">
@@ -137,7 +136,15 @@
 
         <!-- Admin Sidebar Navigation -->
         <aside class="dashboard-sidebar">
-          <div style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:800; color:var(--text-muted); margin-bottom:0.75rem; padding-left:0.5rem;">
+          <div class="sidebar-brand">
+            <div class="sidebar-avatar">GO</div>
+            <div class="sidebar-brand-text">
+              <strong>Care Coordinator</strong>
+              <span>Operations Staff</span>
+            </div>
+            <button class="sidebar-collapse-btn" aria-label="Collapse sidebar" aria-expanded="true" title="Collapse sidebar"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg></span></button>
+          </div>
+          <div class="sidebar-section-label" style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:800; color:var(--text-muted); margin-bottom:0.75rem; padding-left:0.5rem;">
             Operations Navigation
           </div>
 
@@ -163,10 +170,18 @@
             <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg></span></span> <span>Dispatch Alerts</span>
             <span class="badge badge-gold notif-count-badge">3</span>
           </div>
+          <div class="sidebar-footer">
+            <a href="auth.html" class="sidebar-logout"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg></span><span>Sign Out</span></a>
+            <span class="sidebar-version">Ops Console v2.1</span>
+          </div>
         </aside>
 
         <!-- Main Operations Content -->
         <main class="dashboard-content">
+          <div class="sidebar-open-row">
+            <button class="btn btn-sm btn-secondary sidebar-open-btn" aria-label="Open navigation menu"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="18" y2="18"/></svg></span><span>Menu</span></button>
+            <span class="sidebar-open-title">Admin Dashboard</span>
+          </div>
 
           <!-- TAB 1: Dispatch Overview -->
           <div class="dashboard-section active" id="adm-overview">
@@ -582,51 +597,95 @@
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="container">
-      <div class="grid grid-4" style="gap:2.5rem;">
-        <div>
-          <div class="brand-logo" style="color:#FFFFFF; margin-bottom:1.25rem;">
-            <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
-            <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
-          </div>
-          <p style="font-size:0.95rem; margin-bottom:1.25rem;">
-            Dedicated to helping seniors preserve independence, dignity, and joyful living in their private homes through professional aging-in-place modifications.
+      <div class="footer-main-grid">
+        <!-- Col 1: Brand & Socials -->
+        <div class="footer-brand">
+          <a href="../index.html" class="brand-logo footer-logo" aria-label="GoldenYears Home Care">
+            <div class="brand-logo-icon">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+                  <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                </svg>
+              </span>
+            </div>
+            <div class="footer-logo-text">
+              <span class="footer-logo-title">GoldenYears<span class="brand-dot">.</span></span>
+              <span class="footer-logo-subtitle">AGING-IN-PLACE &amp; HOME SAFETY</span>
+            </div>
+          </a>
+          <p class="footer-description">
+            India's premier senior home safety and aging-in-place modification partner, serving 47+ communities with CAPS-certified care, accessible design, and genuine compassion.
           </p>
-        </div>
-
-        <div>
-          <h4 style="margin-bottom:1.25rem;">Safety Services</h4>
-          <div class="footer-links">
-            <a href="service-details.html">ADA Grab Bar Mounting</a>
-            <a href="service-details.html">Continuous Stair Handrails</a>
-            <a href="service-details.html">Custom Access Ramps</a>
-            <a href="services.html">45-Point Safety Inspection</a>
+          <div class="footer-social-links" aria-label="Follow GoldenYears on social media">
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X (formerly Twitter)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m3.464-3.464L20 4"/></svg>
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
           </div>
         </div>
 
+        <!-- Col 2: Services -->
         <div>
-          <h4 style="margin-bottom:1.25rem;">Quick Navigation</h4>
-          <div class="footer-links">
-            <a href="about.html">About Our Mission</a>
-            <a href="pricing.html">Pricing Transparency</a>
-            <a href="dashboard.html">Family Care Portal</a>
-            <a href="contact.html">Contact &amp; Rapid Care</a>
-          </div>
+          <h4 class="footer-heading">SERVICES</h4>
+          <ul class="footer-links-list">
+            <li><a href="service-details.html">ADA Grab Bar Mounting</a></li>
+            <li><a href="service-details.html">Continuous Stair Handrails</a></li>
+            <li><a href="service-details.html">Custom Access Ramps</a></li>
+            <li><a href="service-details.html">Walk-In Shower Conversions</a></li>
+            <li><a href="service-details.html">Door Widening &amp; Levers</a></li>
+            <li><a href="services.html">45-Point Safety Inspection</a></li>
+          </ul>
         </div>
 
+        <!-- Col 3: Company -->
         <div>
-          <h4 style="margin-bottom:1.25rem;">Emergency &amp; Care Contact</h4>
-          <p style="margin-bottom:0.75rem;">
-            <strong>Care Coordinator Hotline:</strong><br>
-            <a href="tel:18005550199" style="color:var(--color-gold-light); font-size:1.15rem; font-weight:700;">(800) 555-0199</a>
+          <h4 class="footer-heading">COMPANY</h4>
+          <ul class="footer-links-list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="home2.html">Home 2</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Stay Connected -->
+        <div class="footer-newsletter-box">
+          <h4 class="footer-heading">STAY CONNECTED</h4>
+          <p class="footer-description">
+            Receive seasonal home safety guides, fall-prevention tips, and aging-in-place updates before anyone else.
           </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); typeof showToast === 'function' ? showToast('Thank you for subscribing! Safety updates are on their way.', 'success') : alert('Thank you for subscribing!'); this.reset();">
+            <div class="footer-newsletter-input-group">
+              <input type="email" class="footer-newsletter-input" placeholder="Your work email..." required aria-label="Work or personal email address">
+              <button type="submit" class="footer-newsletter-btn">JOIN</button>
+            </div>
+          </form>
         </div>
       </div>
 
+      <!-- Footer Bottom -->
       <div class="footer-bottom">
-        <div>© 2026 GoldenYears Home Care LLC. All Rights Reserved.</div>
-        <div style="display:flex; gap:1.5rem;">
+        <div class="footer-copyright">
+          &copy; 2026 GoldenYears Home Care LLC. All rights reserved. Established across 47+ care communities.
+        </div>
+        <div class="footer-legal-links">
           <a href="about.html">Privacy Policy</a>
-          <a href="about.html">Terms of Service</a>
+          <a href="about.html">Terms &amp; Conditions</a>
+          <a href="about.html">Sitemap</a>
         </div>
       </div>
     </div>
