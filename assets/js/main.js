@@ -299,17 +299,53 @@ function initHeroSlider() {
   let currentIndex = 0;
   let slideInterval = null;
 
-  // Render dots
+  // Render dots + slide counter (prev | dots + counter | next) and a
+  // mobile progress bar (prev | progress + counter | next, arrows hidden)
+  const navBar = dotsContainer ? dotsContainer.closest('.hero-slider-nav') : null;
+  let counter = null;
+  let progressFill = null;
+  let progressTrack = null;
+  if (navBar) {
+    counter = document.createElement('span');
+    counter.className = 'slider-count';
+    counter.setAttribute('aria-live', 'polite');
+    if (nextBtn) navBar.insertBefore(counter, nextBtn);
+    else navBar.appendChild(counter);
+    progressTrack = document.createElement('div');
+    progressTrack.className = 'slider-progress';
+    progressTrack.setAttribute('role', 'progressbar');
+    progressTrack.setAttribute('aria-label', 'Hero slide progress');
+    progressTrack.setAttribute('aria-valuemin', '1');
+    progressTrack.setAttribute('aria-valuemax', String(slides.length));
+    progressFill = document.createElement('span');
+    progressFill.className = 'slider-progress-fill';
+    progressTrack.appendChild(progressFill);
+    navBar.insertBefore(progressTrack, dotsContainer || counter);
+    // Tap-to-seek: tapping the bar jumps straight to that slide
+    progressTrack.addEventListener('click', (e) => {
+      const rect = progressTrack.getBoundingClientRect();
+      const ratio = rect.width ? (e.clientX - rect.left) / rect.width : 0;
+      const idx = Math.min(slides.length - 1, Math.max(0, Math.floor(ratio * slides.length)));
+      goToSlide(idx);
+      resetAutoplay();
+    });
+  }
+  function renderCounter() {
+    if (counter) counter.textContent = `${currentIndex + 1} / ${slides.length}`;
+    if (progressFill) progressFill.style.width = `${((currentIndex + 1) / slides.length) * 100}%`;
+    if (progressTrack) progressTrack.setAttribute('aria-valuenow', String(currentIndex + 1));
+  }
   if (dotsContainer) {
     dotsContainer.innerHTML = '';
     slides.forEach((_, idx) => {
       const dot = document.createElement('button');
       dot.className = `slider-dot ${idx === 0 ? 'active' : ''}`;
       dot.setAttribute('aria-label', `Go to slide ${idx + 1}`);
-      dot.addEventListener('click', () => goToSlide(idx));
+      dot.addEventListener('click', () => { goToSlide(idx); resetAutoplay(); });
       dotsContainer.appendChild(dot);
     });
   }
+  renderCounter();
 
   function goToSlide(index) {
     slides[currentIndex].classList.remove('active');
@@ -320,6 +356,7 @@ function initHeroSlider() {
 
     slides[currentIndex].classList.add('active');
     if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+    renderCounter();
   }
 
   function nextSlide() {
@@ -342,7 +379,42 @@ function initHeroSlider() {
     startAutoplay();
   }
 
-  startAutoplay();
+  // Swipe support for touch screens (40px horizontal flick changes slide)
+  const swipeZone = document.querySelector('.hero-slider-wrap');
+  if (swipeZone) {
+    let touchX = null;
+    swipeZone.addEventListener('touchstart', (e) => {
+      touchX = e.touches[0].clientX;
+    }, { passive: true });
+    swipeZone.addEventListener('touchend', (e) => {
+      if (touchX === null) return;
+      const dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) nextSlide(); else prevSlide();
+      resetAutoplay();
+    }, { passive: true });
+  }
+
+  // Pause while the user reads or interacts (and never autoplay for
+  // reduced-motion users): friendlier than a carousel that races away.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let paused = reduceMotion;
+  function pauseAutoplay() { paused = true; clearInterval(slideInterval); }
+  function resumeAutoplay() {
+    if (reduceMotion || !paused) return;
+    paused = false;
+    clearInterval(slideInterval);
+    startAutoplay();
+  }
+  if (swipeZone && !reduceMotion) {
+    swipeZone.addEventListener('mouseenter', pauseAutoplay);
+    swipeZone.addEventListener('mouseleave', resumeAutoplay);
+    swipeZone.addEventListener('focusin', pauseAutoplay);
+    swipeZone.addEventListener('focusout', resumeAutoplay);
+  }
+
+  if (!reduceMotion) startAutoplay();
 }
 
 /* --------------------------------------------------------------------------
