@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us &amp; Rapid Assistance — GoldenYears Home Care</title>
   <meta name="description" content="Reach our compassionate care coordination team. Same-day emergency grab bar dispatch, free in-home safety consultations, and hospital discharge support.">
-  <link rel="stylesheet" href="../assets/css/style.css?v=2">
+  <link rel="stylesheet" href="../assets/css/style.css?v=19">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style id="profile-menu-critical">
@@ -70,7 +70,7 @@
   <!-- ========================================================================
        SECTION 1: Contact Hero with 3 Fast-Response Channels
        ======================================================================== -->
-  <section class="section section-bg-forest" style="padding-top:4.5rem; padding-bottom:4.5rem;">
+  <section class="section section-bg-forest contact-hero-bg" style="padding-top:4.5rem; padding-bottom:4.5rem;">
     <div class="container text-center">
       <span class="badge badge-gold" style="margin-bottom:1.25rem;">We’re Here For Your Family</span>
       <h1 style="color:#FFFFFF; font-size:clamp(2.4rem, 4vw, 3.8rem); margin-bottom:1.25rem;">
@@ -99,7 +99,7 @@
           <div style="font-size:2rem; margin-bottom:0.75rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span></div>
           <h3 style="color:#FFFFFF; font-size:1.35rem; margin-bottom:0.25rem;">Caregiver Concierge</h3>
           <p style="color:var(--color-sage-light); font-size:0.9rem; margin-bottom:1rem;">Email photos of your bathroom for instant estimates.</p>
-          <a href="mailto:care@goldenyearshomecare.com" style="color:var(--color-gold); font-size:0.95rem; font-weight:700;">care@goldenyears.com</a>
+          <a href="mailto:care@goldenyearshomecare.com" style="color:var(--color-gold); font-size:0.95rem; font-weight:700;">care@goldenyearshomecare.com</a>
         </div>
       </div>
     </div>
@@ -118,7 +118,7 @@
             Please provide details regarding your loved one's specific living situation so we can assign the most qualified specialist.
           </p>
 
-          <form id="mainContactForm" style="background:var(--bg-secondary); padding:2.5rem; border-radius:var(--radius-xl); border:1px solid var(--color-border); box-shadow:var(--shadow-md);">
+          <form id="mainContactForm" data-success-message="Message received! Our Care Coordinator will call you within 15 minutes." style="background:var(--bg-secondary); padding:2.5rem; border-radius:var(--radius-xl); border:1px solid var(--color-border); box-shadow:var(--shadow-md);">
             <div class="grid grid-2" style="gap:1rem;">
               <div class="form-group">
                 <label class="form-label" for="cfName">Your Full Name *</label>
@@ -239,32 +239,25 @@
       </div>
 
       <div style="max-width:500px; margin:0 auto 3rem auto; display:flex; gap:0.5rem;">
-        <input type="text" id="zipCheckInput" class="form-control" placeholder="Enter 5-digit zip code (e.g. 75001)">
-        <button type="button" class="btn btn-forest" style="background:var(--color-forest); color:#FFFFFF;" onclick="
-          const z = document.getElementById('zipCheckInput').value.trim();
-          if(z) {
-            window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span> Great news! Our certified technicians serve zip code ' + z + ' with same-day priority availability!', 'success');
-          } else {
-            window.showToast('Please enter a zip code first.', 'error');
-          }
-        ">Check Availability</button>
+        <input type="text" id="zipCheckInput" class="form-control" placeholder="Enter 5-digit zip code (e.g. 75001)" maxlength="10" inputmode="numeric" aria-label="Enter 5-digit zip code">
+        <button type="button" id="zipCheckBtn" class="btn btn-forest" style="background:var(--color-forest); color:#FFFFFF;">Check Availability</button>
       </div>
 
       <div class="grid grid-4" style="text-align:left;">
         <div class="card" style="padding:1.5rem;">
-          <h4 style="color:var(--color-forest); margin-bottom:0.5rem;">Dallas County</h4>
+          <h4 class="county-name" style="margin-bottom:0.5rem;">Dallas County</h4>
           <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Dallas, Richardson, Garland, Irving, Highland Park, University Park.</p>
         </div>
         <div class="card" style="padding:1.5rem;">
-          <h4 style="color:var(--color-forest); margin-bottom:0.5rem;">Collin County</h4>
+          <h4 class="county-name" style="margin-bottom:0.5rem;">Collin County</h4>
           <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Plano, Frisco, McKinney, Allen, Fairview, Prosper.</p>
         </div>
         <div class="card" style="padding:1.5rem;">
-          <h4 style="color:var(--color-forest); margin-bottom:0.5rem;">Tarrant County</h4>
+          <h4 class="county-name" style="margin-bottom:0.5rem;">Tarrant County</h4>
           <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Fort Worth, Arlington, Southlake, Colleyville, Grapevine.</p>
         </div>
         <div class="card" style="padding:1.5rem;">
-          <h4 style="color:var(--color-forest); margin-bottom:0.5rem;">Denton County</h4>
+          <h4 class="county-name" style="margin-bottom:0.5rem;">Denton County</h4>
           <p style="font-size:0.88rem; color:var(--text-muted); margin:0;">Denton, Flower Mound, Lewisville, Highland Village.</p>
         </div>
       </div>
@@ -339,14 +332,11 @@
         </div>
 
         <div>
-          <div style="border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg); border:1px solid var(--color-border); height:360px; background:var(--color-cream-subtle); display:flex; align-items:center; justify-content:center; text-align:center; padding:2rem;">
-            <div>
-              <div style="font-size:3rem; margin-bottom:1rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span></div>
-              <h3 style="font-size:1.4rem; color:var(--color-forest); margin-bottom:0.5rem;">Interactive Map Location</h3>
-              <p style="color:var(--text-muted); font-size:0.92rem; max-width:320px; margin:0 auto 1.25rem auto;">
-                Conveniently located 2 minutes off the Dallas North Tollway near Legacy West.
-              </p>
-              <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Open in Google Maps <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          <div style="border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-lg); border:1px solid var(--color-border); background:var(--color-cream-subtle);">
+            <iframe title="GoldenYears Home Care location map — 4820 Heritage Parkway, Suite 140, Plano, TX 75024" src="https://maps.google.com/maps?q=4820%20Heritage%20Parkway%20Suite%20140%20Plano%20TX%2075024&t=&z=15&ie=UTF8&iwloc=&output=embed" style="width:100%; height:360px; border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:1rem 1.25rem; flex-wrap:wrap;">
+              <div style="font-size:0.9rem; color:var(--text-muted);">2 min off Dallas North Tollway near Legacy West</div>
+              <a href="https://maps.google.com/?q=4820+Heritage+Parkway+Suite+140+Plano+TX+75024" target="_blank" rel="noopener" class="btn btn-sm btn-primary">Open in Google Maps <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -450,19 +440,19 @@
             India's premier senior home safety and aging-in-place modification partner, serving 47+ communities with CAPS-certified care, accessible design, and genuine compassion.
           </p>
           <div class="footer-social-links" aria-label="Follow GoldenYears on social media">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+            <a href="https://instagram.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+            <a href="https://facebook.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X (formerly Twitter)">
+            <a href="https://x.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X (formerly Twitter)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m3.464-3.464L20 4"/></svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
+            <a href="https://youtube.com/@goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+            <a href="https://linkedin.com/company/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
@@ -500,7 +490,7 @@
           <p class="footer-description">
             Receive seasonal home safety guides, fall-prevention tips, and aging-in-place updates before anyone else.
           </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); typeof showToast === 'function' ? showToast('Thank you for subscribing! Safety updates are on their way.', 'success') : alert('Thank you for subscribing!'); this.reset();">
+          <form class="footer-newsletter-form" data-success-message="Thank you for subscribing! Safety updates are on their way.">
             <div class="footer-newsletter-input-group">
               <input type="email" class="footer-newsletter-input" placeholder="Your work email..." required aria-label="Work or personal email address">
               <button type="submit" class="footer-newsletter-btn">JOIN</button>
@@ -509,6 +499,25 @@
         </div>
       </div>
 
+      <!-- Footer Contact Strip -->
+      <div class="footer-contact-strip">
+        <a class="footer-contact-item" href="https://maps.google.com/?q=4820+Heritage+Parkway+Suite+140+Plano+TX+75024" target="_blank" rel="noopener">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="footer-contact-text"><strong>Visit Us</strong><span>4820 Heritage Parkway, Suite 140, Plano, TX 75024</span></span>
+        </a>
+        <a class="footer-contact-item" href="tel:18005550199">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="footer-contact-text"><strong>Call Us</strong><span>(800) 555-0199</span></span>
+        </a>
+        <a class="footer-contact-item" href="mailto:care@goldenyearshomecare.com">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <span class="footer-contact-text"><strong>Email Us</strong><span>care@goldenyearshomecare.com</span></span>
+        </a>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span class="footer-contact-text"><strong>Hours</strong><span>Mon&ndash;Fri 8AM&ndash;6PM &bull; Sat 9AM&ndash;3PM &bull; 24/7 Emergency</span></span>
+        </div>
+      </div>
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-copyright">
@@ -517,12 +526,37 @@
         <div class="footer-legal-links">
           <a href="about.html">Privacy Policy</a>
           <a href="about.html">Terms &amp; Conditions</a>
-          <a href="about.html">Sitemap</a>
+          <a href="sitemap.html">Sitemap</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js?v=19"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('zipCheckBtn');
+      var input = document.getElementById('zipCheckInput');
+      if (!btn || !input) return;
+      function checkZip() {
+        var z = (input.value || '').trim();
+        if (/^\d{5}$/.test(z)) {
+          var safe = z.replace(/[<>&"']/g, '');
+          window.showToast('Great news! Our certified technicians serve zip code ' + safe + ' with same-day priority availability!', 'success');
+          input.value = '';
+          input.focus();
+        } else if (z) {
+          window.showToast('Please enter a valid 5-digit zip code (e.g. 75001).', 'error');
+          input.select();
+          input.focus();
+        } else {
+          window.showToast('Please enter a zip code first.', 'error');
+          input.focus();
+        }
+      }
+      btn.addEventListener('click', checkZip);
+      input.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); checkZip(); } });
+    })();
+  </script>
 </body>
 </html>

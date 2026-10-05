@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aging-in-Place Journal &amp; Safety Insights — GoldenYears Home Care</title>
   <meta name="description" content="Expert fall prevention articles, home modification guides, caregiver tips, and aging-in-place advice from certified home safety specialists.">
-  <link rel="stylesheet" href="../assets/css/style.css?v=2">
+  <link rel="stylesheet" href="../assets/css/style.css?v=19">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style id="profile-menu-critical">
@@ -70,7 +70,7 @@
   <!-- ========================================================================
        SECTION 1: Editorial Journal Hero — Featured Lead Article
        ======================================================================== -->
-  <section class="section section-bg-forest" style="padding-top:4.5rem; padding-bottom:4.5rem;">
+  <section class="section section-bg-forest journal-hero-bg" style="padding-top:4.5rem; padding-bottom:4.5rem;">
     <div class="container">
       <div class="grid grid-2 items-center" style="gap:3.5rem;">
         <div>
@@ -88,12 +88,12 @@
               <div style="color:var(--color-sage-light); font-size:0.85rem;">Clinical Care Director • Published Sept 2026</div>
             </div>
           </div>
-          <a href="blog-details.html" class="btn btn-terracotta btn-lg">Read Complete Article <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+          <a href="blog-details.html?post=subtle-signs" class="btn btn-terracotta btn-lg">Read Complete Article <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
         </div>
 
         <div>
           <div style="border-radius:var(--radius-xl); overflow:hidden; box-shadow:var(--shadow-xl); border:4px solid rgba(255,255,255,0.15);">
-            <img src="../assets/images/hero-handrail.jpg" alt="Senior navigating stairs with continuous handrail" style="width:100%; height:100%; object-fit:cover;">
+            <img src="../assets/images/blog-subtle-signs.jpg" alt="The 7 subtle signs a parent's home needs safety modifications" style="width:100%; height:100%; object-fit:cover;">
           </div>
         </div>
       </div>
@@ -125,12 +125,31 @@
         <p>Evidence-based safety insights to help your aging parents live with independence, pride, and zero fear.</p>
       </div>
 
-      <div class="grid grid-3">
+      <div class="grid grid-3" id="journalGrid">
+        <!-- Post 0 (Featured) -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-terracotta card-img-badge">Fall Prevention</span>
+            <img src="../assets/images/blog-subtle-signs-card.jpg" alt="The 7 subtle signs a parent's home needs safety modifications">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">6 min read • By Marcus Vance, CAPS</span>
+            <h3 class="card-title">The 7 Subtle Signs Your Parent's Home Needs Modifications Now</h3>
+            <p class="card-desc">
+              Most seniors won’t ask for help. Recognizing subtle balance compensation behaviors — like “furniture surfing” or avoiding the upstairs — can prevent a life-altering fall.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Oct 05, 2026</span>
+              <a href="blog-details.html?post=subtle-signs" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
         <!-- Post 1 -->
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-terracotta card-img-badge">Bathroom Safety</span>
-            <img src="../assets/images/hero-grab-bar.jpg" alt="Bathroom grab bar placement guide">
+            <img src="../assets/images/blog-suction-cup-danger.jpg" alt="Why suction-cup grab bars are dangerously unreliable - stud-anchored grab bar">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">5 min read • By Marcus Vance, CAPS</span>
@@ -140,7 +159,7 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Sept 22, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=suction-cup-danger" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -149,7 +168,7 @@
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-forest card-img-badge">Mobility</span>
-            <img src="../assets/images/hero-ramp.jpg" alt="Building an ADA compliant wheelchair ramp">
+            <img src="../assets/images/blog-ada-ramp-slope.jpg" alt="ADA ramp slope 1:12 ratio guidelines for wheelchairs">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">7 min read • By Robert Sterling</span>
@@ -159,7 +178,7 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Sept 18, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=ada-ramp-slope" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -168,7 +187,7 @@
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-gold card-img-badge">Caregiver Tips</span>
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=800&q=80" alt="Checklist for parent fall prevention">
+            <img src="../assets/images/blog-resistant-parents.jpg" alt="How to talk to resistant aging parents about grab bars">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">4 min read • By Maria Delgado</span>
@@ -178,7 +197,7 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Sept 12, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=resistant-parents" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -187,7 +206,7 @@
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-sage card-img-badge">Lighting</span>
-            <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=800&q=80" alt="Nighttime hallway motion lighting">
+            <img src="../assets/images/blog-circadian-lighting.jpg" alt="Circadian lighting and nighttime fall reduction with amber floor light">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">6 min read • By Elena Rostova</span>
@@ -197,7 +216,7 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Aug 28, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=circadian-lighting" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -206,7 +225,7 @@
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-forest card-img-badge">Grants &amp; VA</span>
-            <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=800&q=80" alt="Kitchen accessibility cabinet adjustments">
+            <img src="../assets/images/blog-va-hisa-grant.jpg" alt="How veterans can secure VA HISA grant for home upgrades">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">8 min read • By Katherine Holloway</span>
@@ -216,7 +235,7 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Aug 19, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=va-hisa-grant" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
@@ -225,7 +244,7 @@
         <div class="card">
           <div class="card-img-wrap">
             <span class="badge badge-terracotta card-img-badge">Doors &amp; Levers</span>
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" alt="Lever door handle installation">
+            <img src="../assets/images/blog-round-doorknobs.jpg" alt="Replacing round doorknobs with ADA lever handles for arthritis">
           </div>
           <div class="card-body">
             <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">4 min read • By Marcus Vance, CAPS</span>
@@ -235,10 +254,166 @@
             </p>
             <div class="card-footer">
               <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Aug 10, 2026</span>
-              <a href="blog-details.html" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+              <a href="blog-details.html?post=round-doorknobs" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
             </div>
           </div>
         </div>
+
+        <!-- Post 7 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-terracotta card-img-badge">Bathroom Safety</span>
+            <img src="../assets/images/blog-walkin-shower-curb.jpg" alt="Walk-in shower curb heights that prevent trips">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">6 min read • By Marcus Vance, CAPS</span>
+            <h3 class="card-title">Walk-In Showers: Curb Heights That Prevent Trips</h3>
+            <p class="card-desc">
+              From 14-inch tub walls to 2-inch beveled curbs — how low-barrier shower entries remove the most dangerous step in the house.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">Aug 02, 2026</span>
+              <a href="blog-details.html?post=walkin-shower-curb" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 8 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-forest card-img-badge">Mobility</span>
+            <img src="../assets/images/blog-handrail-returns.jpg" alt="Handrail returns 12-inch rule that prevents falls">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">5 min read • By Robert Sterling</span>
+            <h3 class="card-title">Handrail Returns: The 12-Inch Rule That Prevents Falls</h3>
+            <p class="card-desc">
+              Why rails must extend past the top and bottom steps — and how safety wall returns warn arthritic hands before the last tread.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">July 28, 2026</span>
+              <a href="blog-details.html?post=handrail-returns" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 9 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-gold card-img-badge">Entryways</span>
+            <img src="../assets/images/blog-threshold-ramps.jpg" alt="Threshold ramps eliminating doorway lip for walkers">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">4 min read • By Elena Rostova</span>
+            <h3 class="card-title">Threshold Ramps: Eliminating the 2-Inch Doorway Lip</h3>
+            <p class="card-desc">
+              Sliding doors and front entries hide a walker-catching edge. How beveled rubber transitions create zero-lip passage in under an hour.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">July 20, 2026</span>
+              <a href="blog-details.html?post=threshold-ramps" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 10 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-sage card-img-badge">Recovery Care</span>
+            <img src="../assets/images/blog-shower-seats.jpg" alt="Shower seats for safe seated bathing after hip surgery">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">6 min read • By Sarah Jenkins, RN</span>
+            <h3 class="card-title">Shower Seats: Safe Seated Bathing After Hip Surgery</h3>
+            <p class="card-desc">
+              Discharge planners recommend seated bathing for six weeks post-op. Choosing fold-down teak seats, sprayer reach, and transfer leverage.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">July 14, 2026</span>
+              <a href="blog-details.html?post=shower-seats" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 11 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-terracotta card-img-badge">Doors &amp; Levers</span>
+            <img src="../assets/images/blog-swing-clear-hinges.jpg" alt="Swing-clear hinges adding 2 inches without demolition">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">5 min read • By Marcus Vance, CAPS</span>
+            <h3 class="card-title">Swing-Clear Hinges: 2 Extra Inches Without Demolition</h3>
+            <p class="card-desc">
+              Walker too wide for the bathroom door? Offset hinges add two full inches of clearance in one visit — no wall cuts, no dust.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">July 06, 2026</span>
+              <a href="blog-details.html?post=swing-clear-hinges" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 12 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-terracotta card-img-badge">Fall Prevention</span>
+            <img src="../assets/images/blog-45point-audit.jpg" alt="45-point home safety audit checklist room by room">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">9 min read • By Bob, Lead Safety Inspector</span>
+            <h3 class="card-title">The 45-Point Audit: What Inspectors Check Room by Room</h3>
+            <p class="card-desc">
+              Friction tests, rail deflection loads, lux readings, turning radii — a walkthrough of every checkpoint in a professional safety audit.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">June 29, 2026</span>
+              <a href="blog-details.html?post=45point-audit" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 13 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-sage card-img-badge">Bathroom Safety</span>
+            <img src="../assets/images/blog-anti-scald-valves.jpg" alt="Anti-scald valves protecting thinning senior skin">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">5 min read • By Sarah Jenkins, RN</span>
+            <h3 class="card-title">Anti-Scald Valves: Protecting Thinning Senior Skin</h3>
+            <p class="card-desc">
+              A two-second temperature spike scalds fragile skin. How thermostatic cartridges cap water at safe levels without weak-flow complaints.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">June 21, 2026</span>
+              <a href="blog-details.html?post=anti-scald-valves" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Post 14 -->
+        <div class="card">
+          <div class="card-img-wrap">
+            <span class="badge badge-gold card-img-badge">Senior Ergonomics</span>
+            <img src="../assets/images/blog-handyman-checklist.jpg" alt="Handyman visit checklist 12 small fixes">
+          </div>
+          <div class="card-body">
+            <span style="font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">7 min read • By Katherine Holloway</span>
+            <h3 class="card-title">Handyman Visit Checklist: 12 Small Fixes, Zero Big Falls</h3>
+            <p class="card-desc">
+              Loose boards, stiff windows, dead detectors, wobbly rails — the half-day punch list that removes a dozen daily strain points at once.
+            </p>
+            <div class="card-footer">
+              <span style="font-weight:600; color:var(--text-muted); font-size:0.88rem;">June 15, 2026</span>
+              <a href="blog-details.html?post=handyman-checklist" class="btn btn-sm btn-secondary">Read Story <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <button id="journalViewMore" class="btn btn-secondary btn-lg">View More <span data-remaining>(9 more)</span></button>
       </div>
     </div>
   </section>
@@ -248,35 +423,85 @@
        ======================================================================== -->
   <section class="section section-bg-forest">
     <div class="container">
-      <div style="background:rgba(255,255,255,0.06); border:2px solid var(--color-gold); border-radius:var(--radius-xl); padding:4rem; color:#FFFFFF;">
-        <div class="grid grid-2 items-center" style="gap:3rem;">
+      <div style="background:rgba(255,255,255,0.06); border:2px solid var(--color-gold); border-radius:var(--radius-xl); padding:clamp(2rem, 4vw, 3.5rem); color:#FFFFFF;">
+
+        <div style="text-align:center; max-width:720px; margin:0 auto 2.5rem auto;">
+          <span class="badge badge-gold" style="margin-bottom:1rem;">Free 24-Page Family Resource</span>
+          <h2 style="color:#FFFFFF; font-size:clamp(1.9rem, 3.2vw, 2.6rem); margin-bottom:1rem;">
+            The Complete 2026 Senior Home Safety &amp; Fall Audit Workbook
+          </h2>
+          <p style="color:var(--color-sage-light); font-size:1.08rem; line-height:1.7; margin:0;">
+            Take this checklist room-by-room through your parent’s house. Identify tripping hazards, test rug security, calculate lighting foot-candles, and see which grab bar configurations provide maximum leverage.
+          </p>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:0; flex-wrap:wrap; text-align:center; margin-bottom:2.5rem;">
+          <div style="padding:0.75rem 2rem;">
+            <div style="font-family:var(--font-serif); font-size:2rem; color:var(--color-gold); line-height:1;">24</div>
+            <div style="color:var(--color-sage-light); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;">Full Pages</div>
+          </div>
+          <div style="padding:0.75rem 2rem; border-left:1px solid rgba(255,255,255,0.15);">
+            <div style="font-family:var(--font-serif); font-size:2rem; color:var(--color-gold); line-height:1;">45</div>
+            <div style="color:var(--color-sage-light); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;">Audit Checkpoints</div>
+          </div>
+          <div style="padding:0.75rem 2rem; border-left:1px solid rgba(255,255,255,0.15);">
+            <div style="font-family:var(--font-serif); font-size:2rem; color:var(--color-gold); line-height:1;">4</div>
+            <div style="color:var(--color-sage-light); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;">Pro Worksheets</div>
+          </div>
+          <div style="padding:0.75rem 2rem; border-left:1px solid rgba(255,255,255,0.15);">
+            <div style="font-family:var(--font-serif); font-size:2rem; color:var(--color-gold); line-height:1;">$0</div>
+            <div style="color:var(--color-sage-light); font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em;">Instant PDF</div>
+          </div>
+        </div>
+
+        <div class="grid grid-2 items-center" style="gap:2.5rem;">
           <div>
-            <span class="badge badge-gold" style="margin-bottom:1rem;">Free 24-Page Family Resource</span>
-            <h2 style="color:#FFFFFF; font-size:2.4rem; margin-bottom:1rem;">
-              The Complete 2026 Senior Home Safety &amp; Fall Audit Workbook
-            </h2>
-            <p style="color:var(--color-sage-light); font-size:1.1rem; line-height:1.7; margin-bottom:2rem;">
-              Take this checklist room-by-room through your parent’s house. Identify tripping hazards, test rug security, calculate lighting foot-candles, and see which grab bar configurations provide maximum leverage.
-            </p>
-            <div style="display:flex; gap:1.25rem; flex-wrap:wrap;">
-              <button class="btn btn-terracotta btn-lg" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg></span> Downloading free 2026 Senior Safety Guide (PDF)...', 'success');">Download Free PDF Guide (Instant)</button>
-              <button class="btn btn-white btn-lg open-booking-modal">Schedule In-Person Audit</button>
+            <div style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold); font-weight:700; margin-bottom:1rem;">Inside the Guide</div>
+            <div style="display:flex; flex-direction:column; gap:0.9rem; margin-bottom:2rem;">
+              <div style="display:flex; gap:0.75rem; align-items:flex-start; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md); padding:0.9rem 1.1rem;">
+                <span class="icon icon-inline" style="color:var(--color-gold); flex-shrink:0; margin-top:0.15rem;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><strong style="color:#FFFFFF;">45-point room-by-room audit checklist</strong><br><span style="color:var(--color-sage-light); font-size:0.9rem;">Bathroom, stairs, bedroom, kitchen &amp; entry — score every hazard.</span></div>
+              </div>
+              <div style="display:flex; gap:0.75rem; align-items:flex-start; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md); padding:0.9rem 1.1rem;">
+                <span class="icon icon-inline" style="color:var(--color-gold); flex-shrink:0; margin-top:0.15rem;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><strong style="color:#FFFFFF;">CDC fall risk self-assessment quiz</strong><br><span style="color:var(--color-sage-light); font-size:0.9rem;">Clinically aligned questions that reveal hidden risk in minutes.</span></div>
+              </div>
+              <div style="display:flex; gap:0.75rem; align-items:flex-start; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md); padding:0.9rem 1.1rem;">
+                <span class="icon icon-inline" style="color:var(--color-gold); flex-shrink:0; margin-top:0.15rem;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><strong style="color:#FFFFFF;">ADA grip height measurement diagrams</strong><br><span style="color:var(--color-sage-light); font-size:0.9rem;">Mark exact grab bar positions for every body height.</span></div>
+              </div>
+              <div style="display:flex; gap:0.75rem; align-items:flex-start; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:var(--radius-md); padding:0.9rem 1.1rem;">
+                <span class="icon icon-inline" style="color:var(--color-gold); flex-shrink:0; margin-top:0.15rem;" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+                <div><strong style="color:#FFFFFF;">Contractor question cheat sheet</strong><br><span style="color:var(--color-sage-light); font-size:0.9rem;">Ask the right mounting, warranty &amp; hardware questions.</span></div>
+              </div>
             </div>
           </div>
 
           <div style="text-align:center;">
-            <div style="display:inline-block; background:var(--color-cream); color:var(--color-charcoal); padding:2.5rem; border-radius:var(--radius-lg); box-shadow:var(--shadow-xl); max-width:340px; text-align:left;">
-              <div style="font-family:var(--font-serif); font-size:1.5rem; color:var(--color-forest); margin-bottom:0.5rem;">Inside the Guide:</div>
-              <ul style="font-size:0.92rem; color:var(--text-muted); display:flex; flex-direction:column; gap:0.6rem; margin-bottom:1.5rem;">
-                <li><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> 45-point room-by-room audit checklist</li>
-                <li><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> CDC fall risk self-assessment quiz</li>
-                <li><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> ADA grip height measurement diagrams</li>
-                <li><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span> Contractor question cheat sheet</li>
-              </ul>
-              <span class="badge badge-forest" style="width:100%; justify-content:center;">Verified by NAHB &amp; AARP</span>
+            <div style="position:relative; display:inline-block; text-align:left; max-width:320px; width:100%;">
+              <div style="position:absolute; top:-14px; right:-10px; z-index:2; background:var(--color-terracotta); color:#FFFFFF; font-size:0.78rem; font-weight:800; letter-spacing:0.06em; padding:0.45rem 0.9rem; border-radius:var(--radius-full); box-shadow:var(--shadow-md);">INSTANT PDF</div>
+              <div style="display:flex; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-xl);">
+                <div style="width:14px; background:linear-gradient(180deg, var(--color-gold-dark), var(--color-gold)); flex-shrink:0;"></div>
+                <div style="background:var(--color-forest-dark); padding:2.25rem 2rem; flex-grow:1; border:1px solid rgba(255,255,255,0.15); border-left:none; border-radius:0 var(--radius-lg) var(--radius-lg) 0;">
+                  <div style="font-size:0.75rem; letter-spacing:0.18em; color:var(--color-gold); font-weight:800; margin-bottom:0.75rem;">2026 EDITION • FAMILY WORKBOOK</div>
+                  <div style="font-family:var(--font-serif); font-size:1.65rem; line-height:1.25; color:#FFFFFF; margin-bottom:0.75rem;">Senior Home Safety &amp; Fall Audit Workbook</div>
+                  <div style="height:2px; width:56px; background:var(--color-gold); margin-bottom:0.9rem;"></div>
+                  <div style="color:var(--color-sage-light); font-size:0.88rem; line-height:1.6; margin-bottom:1.25rem;">45-point room-by-room checklist • grab bar leverage maps • lighting &amp; rug tests</div>
+                  <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <span class="badge badge-gold">24 Pages</span>
+                    <span class="badge badge-gold">NAHB &amp; AARP Verified</span>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem;">
+              <button class="btn btn-terracotta btn-lg" onclick="window.showToast('<span class=&quot;icon icon-inline&quot; aria-hidden=&quot;true&quot;><svg viewBox=&quot;0 0 24 24&quot; fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;2&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; aria-hidden=&quot;true&quot;><path d=&quot;M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4&quot;/><polyline points=&quot;7 10 12 15 17 10&quot;/><line x1=&quot;12&quot; x2=&quot;12&quot; y1=&quot;15&quot; y2=&quot;3&quot;/></svg></span> Downloading free 2026 Senior Safety Guide (PDF)...', 'success');">Download Free PDF Guide</button>
+              <button class="btn btn-white btn-lg open-booking-modal">Schedule In-Person Audit</button>
+            </div>
+            <p style="color:var(--color-sage-light); font-size:0.82rem; margin:1rem 0 0 0;">No spam • No paywall • Unsubscribe anytime</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -328,7 +553,7 @@
           Join 8,400+ family members receiving our monthly senior living checklist, home maintenance reminders, and fall prevention updates.
         </p>
 
-        <form style="display:flex; justify-content:center; gap:0.75rem; max-width:520px; margin:0 auto; flex-wrap:wrap;">
+        <form data-success-message="Subscribed! Caregiver Safety Tips are on the way to your inbox." style="display:flex; justify-content:center; gap:0.75rem; max-width:520px; margin:0 auto; flex-wrap:wrap;">
           <input type="email" class="form-control" placeholder="Enter your email address..." required style="flex:1; min-width:260px;">
           <button type="submit" class="btn btn-terracotta">Subscribe Free</button>
         </form>
@@ -394,19 +619,19 @@
             India's premier senior home safety and aging-in-place modification partner, serving 47+ communities with CAPS-certified care, accessible design, and genuine compassion.
           </p>
           <div class="footer-social-links" aria-label="Follow GoldenYears on social media">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
+            <a href="https://instagram.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Instagram">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
+            <a href="https://facebook.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="Facebook">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X (formerly Twitter)">
+            <a href="https://x.com/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="X (formerly Twitter)">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768m3.464-3.464L20 4"/></svg>
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
+            <a href="https://youtube.com/@goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="YouTube">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><polygon points="10 15 15 12 10 9 10 15"/></svg>
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
+            <a href="https://linkedin.com/company/goldenyearshomecare" target="_blank" rel="noopener noreferrer" class="social-icon-btn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
             </a>
           </div>
@@ -444,7 +669,7 @@
           <p class="footer-description">
             Receive seasonal home safety guides, fall-prevention tips, and aging-in-place updates before anyone else.
           </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); typeof showToast === 'function' ? showToast('Thank you for subscribing! Safety updates are on their way.', 'success') : alert('Thank you for subscribing!'); this.reset();">
+          <form class="footer-newsletter-form" data-success-message="Thank you for subscribing! Safety updates are on their way.">
             <div class="footer-newsletter-input-group">
               <input type="email" class="footer-newsletter-input" placeholder="Your work email..." required aria-label="Work or personal email address">
               <button type="submit" class="footer-newsletter-btn">JOIN</button>
@@ -453,6 +678,25 @@
         </div>
       </div>
 
+      <!-- Footer Contact Strip -->
+      <div class="footer-contact-strip">
+        <a class="footer-contact-item" href="https://maps.google.com/?q=4820+Heritage+Parkway+Suite+140+Plano+TX+75024" target="_blank" rel="noopener">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <span class="footer-contact-text"><strong>Visit Us</strong><span>4820 Heritage Parkway, Suite 140, Plano, TX 75024</span></span>
+        </a>
+        <a class="footer-contact-item" href="tel:18005550199">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <span class="footer-contact-text"><strong>Call Us</strong><span>(800) 555-0199</span></span>
+        </a>
+        <a class="footer-contact-item" href="mailto:care@goldenyearshomecare.com">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+          <span class="footer-contact-text"><strong>Email Us</strong><span>care@goldenyearshomecare.com</span></span>
+        </a>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <span class="footer-contact-text"><strong>Hours</strong><span>Mon&ndash;Fri 8AM&ndash;6PM &bull; Sat 9AM&ndash;3PM &bull; 24/7 Emergency</span></span>
+        </div>
+      </div>
       <!-- Footer Bottom -->
       <div class="footer-bottom">
         <div class="footer-copyright">
@@ -461,12 +705,12 @@
         <div class="footer-legal-links">
           <a href="about.html">Privacy Policy</a>
           <a href="about.html">Terms &amp; Conditions</a>
-          <a href="about.html">Sitemap</a>
+          <a href="sitemap.html">Sitemap</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/main.js?v=19"></script>
 </body>
 </html>

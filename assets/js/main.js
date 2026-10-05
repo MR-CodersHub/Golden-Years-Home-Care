@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initFormValidation();
   initBeforeAfterSlider();
+  initJournalViewMore();
 });
 
 /* --------------------------------------------------------------------------
@@ -455,6 +456,9 @@ function initBookingModal() {
   openBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      // Drop any stale inline confirmation from a previous booking
+      const stale = modal.querySelector('.form-success');
+      if (stale) stale.remove();
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
@@ -482,7 +486,16 @@ function initBookingModal() {
       e.preventDefault();
       closeModal();
       showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span> Safety Visit Scheduled! Our Care Coordinator will call within 15 minutes.');
-      bookingForm.reset();
+      clearFormInputs(bookingForm);
+      // Refresh the Interactive Calculator back to defaults after lock-in:
+      // only its inputs reset (no page reload), live totals recalc via change.
+      const calcForm = document.getElementById('costEstimatorForm');
+      if (calcForm) {
+        calcForm.reset();
+        calcForm.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+          input.dispatchEvent(new Event('change', { bubbles: true }));
+        });
+      }
     });
   }
 }
@@ -509,19 +522,65 @@ function initBackToTop() {
 
 /* --------------------------------------------------------------------------
    11. Universal Form Validation & Submissions
+   --------------------------------------------------------------------------
+   - Never reloads the page: every submit is preventDefault()'d.
+   - On success: toast + persistent inline confirmation, then only the
+     form inputs reset (form.reset()). No location.reload() anywhere.
+   - Booking modal has its own dedicated handler (closes modal).
+   - Auth forms keep their redirect flow.
+   - Quiz / cost estimator are live calculators: submit is blocked.
+   - Per-form copy via data-success-message attribute, with sensible
+     defaults per form id/class.
    -------------------------------------------------------------------------- */
 function initFormValidation() {
-  const forms = document.querySelectorAll('form:not(#bookingModalForm):not(#safetyQuizForm):not(#costEstimatorForm)');
+  const DEFAULT_MESSAGES = {
+    'scheduleVisitForm': 'Visit scheduled! Added to your calendar. Our coordinator will confirm shortly.',
+    'familyProfileForm': 'Family profile saved securely.',
+    'portalSettingsForm': 'Preferences saved successfully.',
+    'mainContactForm': 'Message received! Our Care Coordinator will call you within 15 minutes.',
+    'inlineHeroBookingForm': 'Priority visit requested! We will call you shortly to confirm.',
+    'footer-newsletter-form': 'Thank you for subscribing! Safety updates are on their way.'
+  };
+
+  const forms = document.querySelectorAll('form');
+  if (!forms.length) return;
 
   forms.forEach(form => {
+    if (form.dataset.handled === '1') return;
+    form.dataset.handled = '1';
+
+    // Live calculators: never submit, never reload.
+    if (form.id === 'safetyQuizForm' || form.id === 'costEstimatorForm') {
+      form.addEventListener('submit', (e) => e.preventDefault());
+      return;
+    }
+
+    // Dedicated handlers elsewhere: booking modal + auth redirect flow.
+    if (form.id === 'bookingModalForm' || form.id === 'authLoginForm' || form.id === 'authRegisterForm') return;
+
+    // Clear inline confirmation as soon as the user starts editing again
+    form.addEventListener('input', () => {
+      const existing = form.querySelector('.form-success');
+      if (existing) existing.remove();
+    });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      e.stopPropagation();
+
       const requiredInputs = form.querySelectorAll('[required]');
       let valid = true;
+      let firstInvalid = null;
 
       requiredInputs.forEach(input => {
-        if (!input.value.trim()) {
+        const val = (input.value || '').trim();
+        let fieldValid = val.length > 0;
+        if (fieldValid && input.type === 'email') {
+          fieldValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+        }
+        if (!fieldValid) {
           valid = false;
+          if (!firstInvalid) firstInvalid = input;
           input.style.borderColor = 'var(--color-danger)';
         } else {
           input.style.borderColor = '';
@@ -530,13 +589,79 @@ function initFormValidation() {
 
       if (!valid) {
         showToast('Please fill out all required fields marked with *', 'error');
+        if (firstInvalid) firstInvalid.focus();
         return;
       }
 
-      showToast('Thank you! Your inquiry has been safely received.', 'success');
-      form.reset();
+      let message = form.getAttribute('data-success-message');
+      if (!message) {
+        if (form.id && DEFAULT_MESSAGES[form.id]) message = DEFAULT_MESSAGES[form.id];
+        else if (form.classList.contains('footer-newsletter-form')) message = DEFAULT_MESSAGES['footer-newsletter-form'];
+        else message = 'Thank you! Your inquiry has been safely received.';
+      }
+
+      const submitBtn = form.querySelector('[type="submit"]');
+      const originalLabel = submitBtn ? submitBtn.innerHTML : null;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.setAttribute('aria-busy', 'true');
+      }
+
+      // Simulate async send so users see feedback; only inputs clear, page never reloads.
+      setTimeout(() => {
+        showToast(message, 'success');
+        showFormSuccess(form, message);
+        clearFormInputs(form);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.removeAttribute('aria-busy');
+          if (originalLabel !== null) submitBtn.innerHTML = originalLabel;
+        }
+      }, 600);
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   11b. Clear only a form's input columns (no page reload).
+   form.reset() alone restores hardcoded value="..." defaults, so we empty
+   text fields explicitly, reset selects/checkboxes, and clear error styles.
+   -------------------------------------------------------------------------- */
+function clearFormInputs(form) {
+  if (!form) return;
+  form.reset();
+  form.querySelectorAll('input:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"])').forEach(input => {
+    if (input.type !== 'hidden') input.value = '';
+    input.style.borderColor = '';
+  });
+  form.querySelectorAll('textarea').forEach(ta => {
+    ta.value = '';
+    ta.style.borderColor = '';
+  });
+  form.querySelectorAll('select').forEach(sel => {
+    sel.selectedIndex = 0;
+    sel.style.borderColor = '';
+  });
+  form.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(cb => {
+    cb.checked = false;
+  });
+}
+
+/* --------------------------------------------------------------------------
+   11c. Persistent inline form success banner (used by all forms)
+   -------------------------------------------------------------------------- */
+function showFormSuccess(form, message) {
+  if (!form) return;
+  let banner = form.querySelector('.form-success');
+  if (!banner) {
+    banner = document.createElement('div');
+    banner.className = 'form-success';
+    banner.setAttribute('role', 'status');
+    banner.setAttribute('aria-live', 'polite');
+    form.prepend(banner);
+  }
+  banner.innerHTML = '<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span><span></span>';
+  banner.lastElementChild.textContent = message;
 }
 
 /* --------------------------------------------------------------------------
@@ -555,6 +680,40 @@ function initBeforeAfterSlider() {
       overlayImg.style.width = `${val}%`;
     });
   });
+}
+
+/* --------------------------------------------------------------------------
+   13. Journal Grid Staged Reveal (6 default, +3 per View More click)
+   -------------------------------------------------------------------------- */
+function initJournalViewMore() {
+  const grid = document.getElementById('journalGrid');
+  const btn = document.getElementById('journalViewMore');
+  if (!grid || !btn) return;
+
+  const cards = Array.from(grid.querySelectorAll(':scope > .card'));
+  const BATCH = 3;
+  let visible = 6;
+  const label = btn.querySelector('[data-remaining]');
+
+  function render() {
+    cards.forEach((card, index) => {
+      card.classList.toggle('journal-hidden', index >= visible);
+    });
+    const remaining = cards.length - visible;
+    if (remaining <= 0) {
+      btn.style.display = 'none';
+    } else {
+      btn.style.display = '';
+      if (label) label.textContent = `(${remaining} more)`;
+    }
+  }
+
+  btn.addEventListener('click', () => {
+    visible = Math.min(visible + BATCH, cards.length);
+    render();
+  });
+
+  render();
 }
 
 /* --------------------------------------------------------------------------
@@ -594,3 +753,4 @@ function showToast(message, type = 'info') {
 
 // Global expose for dashboard and other scripts
 window.showToast = showToast;
+window.showFormSuccess = showFormSuccess;

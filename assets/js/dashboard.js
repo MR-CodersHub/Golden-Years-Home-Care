@@ -10,7 +10,22 @@ document.addEventListener('DOMContentLoaded', () => {
   initPaymentSimulator();
   initProfileForm();
   initSettingsForm();
+  initInlineSuccessDismiss();
 });
+
+/* --------------------------------------------------------------------------
+   0b. Clear inline success banner when the user edits the form again
+   -------------------------------------------------------------------------- */
+function initInlineSuccessDismiss() {
+  ['scheduleVisitForm', 'familyProfileForm', 'portalSettingsForm'].forEach(id => {
+    const form = document.getElementById(id);
+    if (!form) return;
+    form.addEventListener('input', () => {
+      const existing = form.querySelector('.form-success');
+      if (existing) existing.remove();
+    });
+  });
+}
 
 /* --------------------------------------------------------------------------
    1. Dashboard Navigation Tabs
@@ -90,6 +105,9 @@ function initScheduleForm() {
     if (window.showToast) {
       window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span> Safety visit scheduled! Confirmed in your Upcoming Visits tab.', 'success');
     }
+    if (window.showFormSuccess) {
+      window.showFormSuccess(scheduleForm, 'Safety visit scheduled! Confirmed in your Upcoming Visits tab.');
+    }
 
     scheduleForm.reset();
 
@@ -161,6 +179,10 @@ function initProfileForm() {
     if (window.showToast) {
       window.showToast('Family profile & medical mobility notes updated successfully!', 'success');
     }
+    if (window.showFormSuccess) {
+      window.showFormSuccess(form, 'Family profile & medical mobility notes updated successfully!');
+    }
+    form.reset();
   });
 }
 
@@ -176,5 +198,9 @@ function initSettingsForm() {
     if (window.showToast) {
       window.showToast('Notification preferences & emergency alerts saved.', 'success');
     }
+    if (window.showFormSuccess) {
+      window.showFormSuccess(form, 'Notification preferences & emergency alerts saved.');
+    }
+    form.reset();
   });
 }
