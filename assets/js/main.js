@@ -145,7 +145,7 @@ function initMobileMenu() {
     link.addEventListener('click', closeMenu);
   });
   window.addEventListener('resize', () => {
-    if (window.matchMedia('(min-width: 769px)').matches) closeMenu();
+    if (window.matchMedia('(min-width: 1025px)').matches) closeMenu();
   });
 
   // Store a closed menu in the back-button cache so returning never
