@@ -50,6 +50,9 @@
   --color-danger: #C0392B;
   --color-info: #2B7294;
 
+  /* Fixed navbar height (desktop) — body padding + mobile menu sync to it */
+  --header-h: 62px;
+
   /* Theme-aware accent for small lead text on cards (e.g. card footers) */
   --card-accent: var(--color-forest);
 
@@ -145,6 +148,12 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Last-resort guard: no horizontal page scroll at any width.
+     `clip` (with `hidden` fallback) unlike `hidden` never traps sticky
+     headers or breaks programmatic scrolling. */
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 body {
@@ -486,6 +495,17 @@ p:last-child {
    Inline styles beat normal rules, so override with !important. */
 [data-theme="dark"] h3[style*="color:var(--color-forest)"],
 [data-theme="dark"] h4[style*="color:var(--color-forest)"] { color: #CDE6D6 !important; }
+/* Dark theme: ticks, result banners and callout titles reuse light-mode
+   greens/reds/browns that wash out on dark cards (worst at small sizes).
+   Inline styles need !important; elements whose BACKGROUND uses the color
+   (e.g. error toasts) are excluded so their fills stay intact. */
+[data-theme="dark"] .checklist-icon { color: #EFE4CA !important; }
+[data-theme="dark"] [style*="--color-forest"]:not([style*="background"]) { color: #CDE6D6 !important; }
+[data-theme="dark"] [style*="--color-success"]:not([style*="background"]) { color: #7CC79B !important; }
+[data-theme="dark"] [style*="--color-warning"]:not([style*="background"]) { color: #E8A856 !important; }
+[data-theme="dark"] [style*="--color-danger"]:not([style*="background"]) { color: #F0A096 !important; }
+[data-theme="dark"] [style*="--color-terracotta-dark"]:not([style*="background"]) { color: #E8C9BD !important; }
+[data-theme="dark"] [style*="--color-gold-dark"]:not([style*="background"]) { color: #EFE4CA !important; }
 .county-name { color: var(--color-forest); }
 [data-theme="dark"] .county-name { color: #CDE6D6; }
 
@@ -493,14 +513,27 @@ p:last-child {
    Site Navigation Header
    -------------------------------------------------------------------------- */
 .site-header {
-  position: sticky;
+  /* Fixed (not sticky): sticky breaks under page-level overflow guards,
+     fixed keeps the bar pinned on every page and every width. */
+  position: fixed;
   top: 0;
-  z-index: 999;
+  left: 0;
+  right: 0;
+  z-index: 1000;
   background-color: var(--bg-header);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--color-border);
   transition: all var(--trans-base);
+}
+/* Fixed header leaves normal flow: offset the page by its height so
+   heroes are never hidden underneath it. */
+body {
+  padding-top: var(--header-h);
+}
+/* Anchored jumps (#contact-form etc.) stop below the fixed bar. */
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 .site-header.is-scrolled {
   box-shadow: var(--shadow-sm);
@@ -511,45 +544,50 @@ p:last-child {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 0;
+  padding: 0.7rem 0;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.65rem;
   font-family: var(--font-serif);
-  font-size: 1.55rem;
+  font-size: 1.3rem;
   color: var(--color-forest);
   font-weight: 700;
 }
 [data-theme="dark"] .brand-logo {
   color: var(--color-cream);
 }
+/* Tagline under the brand name: hidden on desktop/tablet, revealed tiny
+   on 320px headers so branding stays complete without overflowing. */
+.brand-tagline {
+  display: none;
+}
 .brand-logo-icon {
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   background: linear-gradient(135deg, var(--color-forest), var(--color-forest-light));
   color: var(--color-gold);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   box-shadow: var(--shadow-xs);
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.25rem;
 }
 .nav-link {
   font-weight: 600;
-  font-size: 0.96rem;
+  font-size: 0.87rem;
   color: var(--text-main);
   position: relative;
-  padding: 0.4rem 0;
+  padding: 0.35rem 0;
 }
 .nav-link:hover, .nav-link.active {
   color: var(--color-terracotta);
@@ -612,12 +650,17 @@ p:last-child {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
+  gap: 0.6rem;
+}
+/* Navbar CTA stays compact (btn-sm is shared site-wide, so scope it here) */
+.nav-actions .btn {
+  padding: 0.55rem 1.1rem;
+  font-size: 0.85rem;
 }
 
 .theme-toggle-btn, .rtl-toggle-btn {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
@@ -639,8 +682,8 @@ p:last-child {
   position: relative;
 }
 .profile-toggle-btn {
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: var(--radius-full);
   display: inline-flex;
   align-items: center;
@@ -659,8 +702,10 @@ p:last-child {
   border-color: var(--color-forest);
 }
 .profile-toggle-btn .icon {
-  width: 19px;
-  height: 19px;
+  /* Person glyph has more visual mass than the moon crescent, so render it
+     slightly smaller to optically match the 19px theme toggle icon. */
+  width: 16px;
+  height: 16px;
 }
 .profile-dropdown {
   position: absolute;
@@ -679,6 +724,20 @@ p:last-child {
   transition: all var(--trans-fast);
 }
 .profile-menu.active .profile-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+/* Open on hover (desktop mice) and keyboard focus — click still toggles
+   for touch screens and keeps aria-expanded in sync via main.js. */
+@media (hover: hover) {
+  .profile-menu:hover .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+.profile-menu:focus-within .profile-dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -2512,7 +2571,7 @@ a.footer-contact-item:hover .footer-contact-text span {
   
   .nav-menu {
     position: fixed;
-    top: 70px;
+    top: var(--header-h);
     left: 0;
     width: 100%;
     background-color: var(--bg-card);
@@ -2522,6 +2581,9 @@ a.footer-contact-item:hover .footer-contact-text span {
     border-bottom: 1px solid var(--color-border);
     display: none;
     z-index: 998;
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav-menu.active {
     display: flex;
@@ -2574,9 +2636,310 @@ a.footer-contact-item:hover .footer-contact-text span {
     right: 1.5rem;
     bottom: 1.5rem;
   }
+
+  .hero-slide {
+    padding: 3.5rem 0;
+  }
+  .room-spotlight-img {
+    min-height: 300px;
+  }
+  .room-spotlight-info {
+    padding: 2.25rem;
+  }
+
+  .modal-overlay {
+    padding: 1rem;
+  }
+  .modal-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .toast-container {
+    left: 1rem;
+    right: 1rem;
+  }
+  .toast {
+    width: 100%;
+  }
   
   .dashboard-content {
     padding: 1.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Overflow guards — grid/flex children must be allowed to shrink below
+   their content width, or nowrap labels (card footers) and long
+   unbreakable strings (email addresses) push the page past 320px.
+   -------------------------------------------------------------------------- */
+.grid > *,
+.footer-main-grid > *,
+.footer-contact-strip > * {
+  min-width: 0;
+}
+.footer-contact-item {
+  min-width: 0;
+}
+.footer-contact-text {
+  min-width: 0;
+}
+.footer-contact-text span {
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   Small phones (480px and below) — single column, stacked actions
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  :root {
+    --section-pad-y: 48px;
+    --header-h: 58px;
+  }
+
+  .container,
+  .container-narrow {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .grid {
+    gap: 1.25rem;
+  }
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  /* Navbar: hide Schedule CTA (booking stays reachable via page CTAs).
+     measured math at 320px (288px content): brand + 4 buttons must fit. */
+  .nav-actions .btn {
+    display: none;
+  }
+  .navbar {
+    gap: 0.5rem;
+  }
+  .navbar > * {
+    min-width: 0;
+  }
+  .nav-actions {
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+  .brand-logo {
+    font-size: 1.1rem;
+    gap: 0.5rem;
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+  .brand-logo-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+  }
+  /* Minimal-portal tagline is the widest header string: drop it on phones */
+  .minimal-header .brand-logo small {
+    display: none;
+  }
+  .theme-toggle-btn, .rtl-toggle-btn, .profile-toggle-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .mobile-toggle {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  /* Hero */
+  .hero-slider-wrap {
+    min-height: 440px;
+  }
+  .hero-slide {
+    padding: 2.5rem 0;
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 8vw, 2.5rem);
+  }
+  .hero-subtitle {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-buttons {
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+  .hero-buttons .btn-lg {
+    width: 100%;
+    white-space: normal;
+  }
+  .hero-slider-nav {
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  /* CTAs go full width so nothing overflows 320px */
+  .btn-lg {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .room-spotlight-img {
+    min-height: 220px;
+  }
+  .room-spotlight-info {
+    padding: 1.75rem 1.25rem;
+  }
+  .room-tab-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.88rem;
+  }
+
+  /* Card footers: let the lead label wrap instead of forcing overflow */
+  .card-footer {
+    flex-wrap: wrap;
+    min-height: 0;
+  }
+  .card-footer > span:first-child {
+    white-space: normal;
+    font-size: 0.95rem;
+  }
+
+  /* Flex input rows (zip checker, live chat) must shrink, not push out */
+  .form-control {
+    min-width: 0;
+  }
+  #zipCheckInput,
+  #liveMsgInput {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+  #zipCheckBtn {
+    flex-shrink: 0;
+  }
+
+  /* Tables stay scrollable with compact cells */
+  .data-table th {
+    padding: 0.85rem 1rem;
+    font-size: 0.78rem;
+  }
+  .data-table td {
+    padding: 0.9rem 1rem;
+    font-size: 0.88rem;
+  }
+
+  .modal-overlay {
+    padding: 0.75rem;
+  }
+  .modal-container {
+    padding: 1.5rem 1.25rem;
+    max-height: 92vh;
+    border-radius: var(--radius-lg);
+  }
+
+  .footer-contact-strip {
+    padding: 1.25rem;
+  }
+  .toast-container {
+    bottom: 1rem;
+  }
+
+  .dashboard-content {
+    padding: 1rem;
+  }
+  .timeline-step, .timeline-step:nth-child(even), .timeline-step:nth-child(odd) {
+    padding-left: 52px;
+  }
+
+  /* Deep overflow net: ANY inline flex row may wrap its children at 320px.
+     Rows that fit stay on one line; only overflowing rows (button pairs,
+     avatar+text cards, search bars) wrap instead of pushing the page out. */
+  div[style*="display:flex"],
+  div[style*="display: flex"],
+  label[style*="display:flex"],
+  label[style*="display: flex"] {
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  div[style*="display:flex"] > *,
+  div[style*="display: flex"] > *,
+  label[style*="display:flex"] > *,
+  label[style*="display: flex"] > * {
+    min-width: 0;
+  }
+  /* Long words, emails and URLs must break rather than widen the page */
+  p, li, h1, h2, h3, h4, span, a {
+    overflow-wrap: break-word;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Extra-small phones (360px and below, covers 320px) — tighten chrome
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  :root {
+    --header-h: 56px;
+  }
+  /* 288px content: compact brand (name always visible) + 30px buttons.
+     Full navbars (4 buttons) show icon + name; minimal portals (2 buttons)
+     also keep the tagline, shrunk. */
+  .brand-logo {
+    font-size: 0.85rem;
+    gap: 0.4rem;
+    white-space: nowrap;
+  }
+  .brand-logo > span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .brand-logo-icon {
+    width: 28px;
+    height: 28px;
+  }
+  .minimal-header .brand-logo small {
+    display: block;
+    font-size: 0.46rem;
+    letter-spacing: 0.06em;
+  }
+  .site-header:not(.minimal-header) .brand-logo > span.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+  .site-header:not(.minimal-header) .brand-tagline {
+    display: block;
+    font-size: 0.46rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    font-weight: 700;
+    font-family: var(--font-sans);
+  }
+  .nav-actions {
+    gap: 0.3rem;
+  }
+  .theme-toggle-btn, .rtl-toggle-btn, .profile-toggle-btn, .mobile-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 0.9rem;
+  }
+  /* Smaller person glyph at 320px to match the slimmer header */
+  .profile-toggle-btn .icon {
+    width: 13px;
+    height: 13px;
+  }
+  .room-spotlight-info {
+    padding: 1.5rem 1rem;
+  }
+  .hero-slider-nav {
+    position: static;
+    margin-top: 1.5rem;
   }
 }
 

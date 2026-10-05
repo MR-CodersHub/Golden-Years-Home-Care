@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GoldenYears Home Care — Certified Aging-in-Place Handyman & Senior Safety</title>
   <meta name="description" content="Compassionate, certified local handyman and home modification services for seniors aging in place safely. Grab bars, ramps, stair handrails, and fall prevention.">
-  <link rel="stylesheet" href="assets/css/style.css?v=19">
+  <link rel="stylesheet" href="assets/css/style.css?v=32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style id="profile-menu-critical">
@@ -13,16 +13,16 @@
 .profile-menu{position:relative}
 .profile-menu .icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;vertical-align:middle}
 .profile-menu .icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.profile-toggle-btn{width:40px;height:40px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background-color:var(--bg-tertiary,#f4f1ea);color:var(--text-main,#2b2b2b);border:1px solid var(--color-border,#e2ddd2);font-size:1.1rem;transition:background-color .2s,color .2s,border-color .2s;cursor:pointer}
+.profile-toggle-btn{width:34px;height:34px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background-color:var(--bg-tertiary,#f4f1ea);color:var(--text-main,#2b2b2b);border:1px solid var(--color-border,#e2ddd2);font-size:1.1rem;transition:background-color .2s,color .2s,border-color .2s;cursor:pointer}
 .profile-toggle-btn:hover,.profile-menu.active .profile-toggle-btn{background-color:var(--color-forest,#2e4b3f);color:#fff;border-color:var(--color-forest,#2e4b3f)}
-.profile-toggle-btn .icon{width:19px;height:19px}
+.profile-toggle-btn .icon{width:16px;height:16px}
 .profile-dropdown{position:absolute;top:calc(100% + 10px);right:0;min-width:240px;background-color:var(--bg-card,#ffffff);border:1px solid var(--color-border,#e2ddd2);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.16);padding:.5rem;z-index:1001;opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s,transform .2s,visibility .2s}
 .profile-menu.active .profile-dropdown{opacity:1;visibility:visible;transform:translateY(0)}
 .profile-link{display:flex;align-items:center;gap:.7rem;padding:.65rem .9rem;border-radius:8px;font-size:.93rem;font-weight:600;color:var(--text-main,#2b2b2b);text-decoration:none;transition:background-color .2s,color .2s}
 .profile-link:hover{background-color:var(--color-forest-subtle,#e7efe9);color:var(--color-forest,#2e4b3f)}
 .profile-link .icon{width:18px;height:18px}
 .profile-divider{height:1px;background-color:var(--color-border,#e2ddd2);margin:.4rem .5rem}
-[dir="rtl"] .profile-dropdown{right:auto;left:0}
+[dir="rtl"] .profile-dropdown{right:auto;left:0}@media (max-width:360px){.profile-toggle-btn{width:30px;height:30px}.profile-toggle-btn .icon{width:13px;height:13px}}
 </style>
 </head>
 <body>
@@ -32,7 +32,7 @@
     <div class="container navbar">
       <a href="index.html" class="brand-logo" aria-label="GoldenYears Home Care Home">
         <div class="brand-logo-icon"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span></div>
-        <span>GoldenYears<span style="color:var(--color-terracotta);">.</span></span>
+        <span class="brand-text" style="display:flex; flex-direction:column; line-height:1.2;"><span class="brand-name">GoldenYears<span style="color:var(--color-terracotta);">.</span></span><small class="brand-tagline">AGING-IN-PLACE &amp; HOME SAFETY</small></span>
       </a>
 
       <nav class="nav-menu" aria-label="Primary Navigation">
@@ -754,6 +754,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/main.js?v=19"></script>
+  <script src="assets/js/main.js?v=20"></script>
 </body>
 </html>
