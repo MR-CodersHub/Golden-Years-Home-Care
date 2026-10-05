@@ -709,14 +709,21 @@ section[id] {
 }
 .profile-dropdown {
   position: absolute;
-  top: calc(100% + 10px);
+  /* Attached to the button with a hoverable padding bridge (NOT a margin
+     gap): the cursor can travel from button to links without :hover
+     dropping and the menu vanishing mid-reach. */
+  top: 100%;
+  padding-top: 10px;
   right: 0;
   min-width: 240px;
   background-color: var(--bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
-  padding: 0.5rem;
+  /* inner padding for the link list (outer 10px top is the hover bridge) */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
   z-index: 1001;
   opacity: 0;
   visibility: hidden;
@@ -756,6 +763,11 @@ section[id] {
 .profile-link:hover {
   background-color: var(--color-forest-subtle);
   color: var(--color-forest);
+}
+/* Dark theme: forest-on-forest hover would swallow the item text */
+[data-theme="dark"] .profile-link:hover {
+  background-color: rgba(199, 168, 107, 0.16);
+  color: #EFE4CA;
 }
 .profile-link .icon {
   width: 18px;
@@ -2597,6 +2609,11 @@ a.footer-contact-item:hover .footer-contact-text span {
   .grid-2, .grid-3, .grid-4 {
     grid-template-columns: 1fr;
   }
+  /* Journal stays 2-up on tablets so cards don't stretch full width */
+  #journalGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
   .tech-tags {
     min-height: 0;
   }
@@ -2695,6 +2712,17 @@ a.footer-contact-item:hover .footer-contact-text span {
     --section-pad-y: 48px;
     --header-h: 58px;
   }
+  /* Viewport-sized type: everything rem-based steps down together */
+  html {
+    font-size: 15px;
+  }
+  h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+  h2 { font-size: clamp(1.45rem, 5.5vw, 1.9rem); }
+  h3 { font-size: clamp(1.2rem, 4.5vw, 1.4rem); }
+  .text-lead {
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
 
   .container,
   .container-narrow {
@@ -2708,6 +2736,9 @@ a.footer-contact-item:hover .footer-contact-text span {
 
   .grid {
     gap: 1.25rem;
+  }
+  #journalGrid {
+    grid-template-columns: 1fr;
   }
   .section-header {
     margin-bottom: 2rem;
@@ -2885,6 +2916,15 @@ a.footer-contact-item:hover .footer-contact-text span {
 @media (max-width: 360px) {
   :root {
     --header-h: 56px;
+  }
+  html {
+    font-size: 14px;
+  }
+  h1 { font-size: clamp(1.6rem, 8.5vw, 1.8rem); }
+  h2 { font-size: clamp(1.35rem, 6.5vw, 1.45rem); }
+  h3 { font-size: 1.15rem; }
+  .text-lead {
+    font-size: 0.98rem;
   }
   /* 288px content: compact brand (name always visible) + 30px buttons.
      Full navbars (4 buttons) show icon + name; minimal portals (2 buttons)

@@ -5,9 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Family Portal Access &amp; Registration — GoldenYears Home Care</title>
   <meta name="description" content="Secure portal access for family members, seniors, and caregivers. Track in-home safety modifications, technician visit logs, and service records.">
-  <link rel="stylesheet" href="../assets/css/style.css?v=32">
+  <link rel="stylesheet" href="../assets/css/style.css?v=36">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style id="auth-redesign">
+/* Split-card auth layout */
+.auth-shell{
+  display:grid; grid-template-columns:0.92fr 1.08fr;
+  background:var(--bg-card); border:1px solid var(--color-border);
+  border-radius:var(--radius-xl); box-shadow:var(--shadow-xl); overflow:hidden;
+}
+.auth-panel{
+  position:relative; color:#FFFFFF; padding:3rem 2.5rem;
+  background:linear-gradient(150deg,var(--color-forest-dark) 0%,var(--color-forest) 55%,var(--color-forest-light) 130%);
+  display:flex; flex-direction:column; justify-content:center; gap:1.5rem; overflow:hidden;
+}
+.auth-panel::after{
+  content:""; position:absolute; inset:auto -60px -60px auto; width:220px; height:220px; border-radius:50%;
+  background:radial-gradient(circle,rgba(199,168,107,.35) 0%,rgba(199,168,107,0) 70%);
+}
+.auth-panel h2{color:#FFFFFF; font-size:clamp(1.6rem,2.4vw,2.1rem); line-height:1.25; margin:0;}
+.auth-panel p{color:var(--color-sage-light); font-size:0.98rem; line-height:1.65; margin:0;}
+.auth-check{display:flex; gap:0.7rem; align-items:flex-start; font-size:0.93rem; color:#FFFFFF;}
+.auth-check .icon{color:var(--color-gold); flex-shrink:0; margin-top:0.15rem;}
+.auth-stats{display:flex; gap:1.75rem; flex-wrap:wrap; border-top:1px solid rgba(255,255,255,.18); padding-top:1.25rem;}
+.auth-stats strong{display:block; font-family:var(--font-serif); font-size:1.5rem; color:var(--color-gold); line-height:1;}
+.auth-stats span{font-size:0.75rem; letter-spacing:.06em; text-transform:uppercase; color:var(--color-sage-light);}
+.auth-quote{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); border-radius:var(--radius-md); padding:1.1rem 1.25rem; font-size:0.9rem; font-style:italic; line-height:1.6; color:#FFFFFF;}
+.auth-quote footer{font-style:normal; font-size:0.8rem; color:var(--color-gold); font-weight:700; margin-top:0.5rem;}
+.auth-formside{padding:2.75rem 2.5rem;}
+/* Segmented tab control */
+.auth-tabs{display:grid; grid-template-columns:1fr 1fr; background:var(--bg-tertiary); border-radius:var(--radius-full); padding:0.35rem; margin-bottom:2rem;}
+.auth-tabs button{border-radius:var(--radius-full); padding:0.7rem 0.5rem; font-weight:700; font-size:0.92rem; color:var(--text-muted); transition:all var(--trans-fast);}
+.auth-tabs button[aria-selected="true"]{background:var(--color-forest); color:#FFFFFF; box-shadow:var(--shadow-sm);}
+/* Password visibility */
+.pw-wrap{position:relative;}
+.pw-wrap .form-control{padding-right:3rem;}
+[dir="rtl"] .pw-wrap .form-control{padding-right:0.9rem; padding-left:3rem;}
+.pw-toggle{position:absolute; top:50%; right:0.6rem; transform:translateY(-50%); font-size:0.78rem; font-weight:700; color:var(--color-terracotta); padding:0.4rem 0.6rem; border-radius:var(--radius-xs);}
+[dir="rtl"] .pw-toggle{right:auto; left:0.6rem;}
+.pw-toggle:hover{background:var(--color-terracotta-subtle);}
+/* Strength meter */
+.strength{display:flex; gap:0.4rem; margin-top:0.5rem; align-items:center;}
+.strength i{height:5px; flex:1; border-radius:var(--radius-full); background:var(--color-border);}
+.strength-label{font-size:0.78rem; color:var(--text-muted); margin-top:0.35rem; min-height:1.2em;}
+/* Password-free options */
+.auth-alt{display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.75rem;}
+.auth-alt-btn{display:flex; gap:0.8rem; align-items:center; text-align:left; border:1.5px solid var(--color-border); border-radius:var(--radius-md); padding:1rem; background:var(--bg-card); transition:all var(--trans-fast); width:100%;}
+.auth-alt-btn:hover{border-color:var(--color-forest); box-shadow:var(--shadow-sm); transform:translateY(-1px);}
+.auth-alt-btn .icon{color:var(--color-terracotta); flex-shrink:0;}
+.auth-alt-btn strong{display:block; color:var(--text-heading); font-size:0.95rem;}
+.auth-alt-btn small{color:var(--text-muted); font-size:0.8rem;}
+@media (max-width: 900px){
+  .auth-shell{grid-template-columns:1fr;}
+  .auth-panel{padding:2.25rem 1.75rem;}
+  .auth-formside{padding:2rem 1.5rem;}
+  .auth-alt{grid-template-columns:1fr;}
+}
+@media (max-width: 480px){
+  .auth-panel{padding:2rem 1.25rem;}
+  .auth-formside{padding:1.75rem 1.1rem;}
+  .auth-stats{gap:1.25rem;}
+}
+</style>
 </head>
 <body>
 
@@ -31,225 +91,131 @@
   </header>
 
   <!-- ========================================================================
-       SECTION 1: Security & Family Privacy Header
+       SECTION 1: Split authentication card
        ======================================================================== -->
-  <section class="section section-bg-forest text-center" style="padding-top:4rem; padding-bottom:3.5rem;">
-    <div class="container-narrow">
-      <span class="badge badge-gold" style="margin-bottom:1rem;">Protected Family Access</span>
-      <h1 style="color:#FFFFFF; font-size:clamp(2.2rem, 3.5vw, 3.2rem); margin-bottom:1rem;">
-        Welcome to Your Family Care Portal
-      </h1>
-      <p style="color:var(--color-sage-light); font-size:1.15rem; max-width:600px; margin:0 auto 1.5rem auto;">
-        Sign in to review your loved one’s home modifications, view technician visit photos, schedule safety visits, and download safety audit certificates.
-      </p>
-      <div style="display:flex; justify-content:center; gap:1.5rem; color:var(--color-sage-light); font-size:0.9rem; flex-wrap:wrap;">
-        <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> 256-Bit SSL Encrypted</span>
-        <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span> Family Privacy Guaranteed</span>
-        <span><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> 24/7 Portal Access</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SECTION 2: Interactive Dual-Tab Authentication Card
-       ======================================================================== -->
-  <section class="section" style="margin-top:-2.5rem;">
-    <div class="container-narrow">
-      <div class="card" style="padding:3rem 2.5rem; background:var(--bg-card); border:1px solid var(--color-border); box-shadow:var(--shadow-xl); border-radius:var(--radius-xl);">
-        
-        <!-- Tab Controls -->
-        <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:2.5rem; border-bottom:1px solid var(--color-border); padding-bottom:1rem;">
-          <button class="btn btn-primary" id="tabBtnLogin" onclick="
-            document.getElementById('authLoginForm').style.display='block';
-            document.getElementById('authRegisterForm').style.display='none';
-            this.className='btn btn-primary';
-            document.getElementById('tabBtnReg').className='btn btn-secondary';
-          ">Sign In to Existing Portal</button>
-          
-          <button class="btn btn-secondary" id="tabBtnReg" onclick="
-            document.getElementById('authLoginForm').style.display='none';
-            document.getElementById('authRegisterForm').style.display='block';
-            this.className='btn btn-primary';
-            document.getElementById('tabBtnLogin').className='btn btn-secondary';
-          ">Register New Family Account</button>
-        </div>
-
-        <!-- FORM 1: Login Form -->
-        <form id="authLoginForm" onsubmit="event.preventDefault(); window.showToast('Welcome back! Signing you into your family portal...', 'success'); setTimeout(() => window.location.href='dashboard.html', 900);">
-          <div class="form-group">
-            <label class="form-label" for="loginEmail">Email Address or Phone Number *</label>
-            <input type="text" id="loginEmail" class="form-control" placeholder="e.g. sarah.miller@example.com" value="sarah.miller@example.com" required>
-          </div>
-
-          <div class="form-group">
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-              <label class="form-label" for="loginPass" style="margin:0;">Password *</label>
-              <a href="#" style="font-size:0.85rem; color:var(--color-terracotta);" onclick="event.preventDefault(); window.showToast('Reset password link sent to your registered email!');">Forgot password?</a>
-            </div>
-            <input type="password" id="loginPass" class="form-control" value="••••••••••••" required>
-          </div>
-
-          <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.5rem;">
-            <input type="checkbox" id="rememberMe" checked style="width:18px; height:18px;">
-            <label for="rememberMe" style="font-size:0.92rem; color:var(--text-muted); cursor:pointer;">Keep me signed in on this safe family device</label>
-          </div>
-
-          <button type="submit" class="btn btn-terracotta btn-lg" style="width:100%;">
-            Enter Family Dashboard <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-          </button>
-          
-          <div style="text-align:center; margin-top:1.5rem; font-size:0.92rem; color:var(--text-muted);">
-            Want to test the live portal demo? Click "Enter Family Dashboard" above!
-          </div>
-        </form>
-
-        <!-- FORM 2: Register Form (Hidden initially) -->
-        <form id="authRegisterForm" style="display:none;" onsubmit="event.preventDefault(); window.showToast('Family account created! Redirecting to setup...', 'success'); setTimeout(() => window.location.href='dashboard.html', 1200);">
-          <div class="grid grid-2" style="gap:1rem;">
-            <div class="form-group">
-              <label class="form-label">Your Name (Caregiver) *</label>
-              <input type="text" class="form-control" placeholder="e.g. David Sterling" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Your Relationship *</label>
-              <select class="form-control" required>
-                <option>Son / Daughter</option>
-                <option>Senior Homeowner (Self)</option>
-                <option>Spouse / Partner</option>
-                <option>Guardian / Care Manager</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Senior / Parent’s Full Name *</label>
-            <input type="text" class="form-control" placeholder="e.g. Eleanor Vance" required>
-          </div>
-
-          <div class="grid grid-2" style="gap:1rem;">
-            <div class="form-group">
-              <label class="form-label">Your Cell Phone *</label>
-              <input type="tel" class="form-control" placeholder="(555) 000-0000" required>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Your Email *</label>
-              <input type="email" class="form-control" placeholder="david@example.com" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">Create a Strong Password *</label>
-            <input type="password" class="form-control" placeholder="At least 8 characters..." required>
-          </div>
-
-          <button type="submit" class="btn btn-forest btn-lg" style="width:100%; background:var(--color-forest); color:#FFFFFF;">
-            Create Free Family Account
-          </button>
-        </form>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SECTION 3: Role Selector ("Who Are You Registering For?")
-       ======================================================================== -->
-  <section class="section section-bg-secondary">
+  <section class="section">
     <div class="container">
-      <div class="section-header text-center">
-        <span class="text-eyebrow">Tailored Experience</span>
-        <h2>Choose the Account Type that Fits Your Role</h2>
-        <p>We customize your portal dashboard based on who is managing home safety.</p>
-      </div>
+      <div class="auth-shell">
 
-      <div class="grid grid-3">
-        <div class="feature-card" style="text-align:center;">
-          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
-          <h3 style="font-size:1.35rem;">Adult Child Caregiver</h3>
-          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
-            For sons and daughters managing parent modifications remotely. Features photo sign-offs, live SMS alerts, and online bill pay.
-          </p>
-          <span class="badge badge-forest">Most Popular</span>
-        </div>
-
-        <div class="feature-card" style="text-align:center;">
-          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span></div>
-          <h3 style="font-size:1.35rem;">Independent Senior</h3>
-          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
-            Designed with high-contrast text, large touch buttons, and direct phone contact to your personal technician.
-          </p>
-          <span class="badge badge-terracotta">Senior Friendly</span>
-        </div>
-
-        <div class="feature-card" style="text-align:center;">
-          <div class="feature-icon-box" style="margin:0 auto 1.25rem auto;"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg></span></div>
-          <h3 style="font-size:1.35rem;">Healthcare Case Worker</h3>
-          <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:1rem;">
-            For occupational therapists, hospital discharge planners, and social workers needing rapid certified bids and safety verification.
-          </p>
-          <span class="badge badge-gold">Clinical Access</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       SECTION 4: Senior-Friendly Big Button Login Options
-       ======================================================================== -->
-  <section class="section">
-    <div class="container-narrow text-center">
-      <div class="section-header text-center">
-        <span class="text-eyebrow">Simple &amp; Painless</span>
-        <h2>Fast, Password-Free Login Options</h2>
-        <p>Don't want to memorize another password? Use our quick one-click verification methods.</p>
-      </div>
-
-      <div class="grid grid-2" style="gap:1.5rem;">
-        <button class="btn btn-white btn-lg" style="border:1.5px solid var(--color-border); padding:1.5rem; justify-content:flex-start; text-align:left;" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> 6-digit SMS verification code texted to your phone!');">
-          <span style="font-size:2rem; margin-right:1rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span></span>
-          <div>
-            <div style="font-weight:700; color:var(--text-heading); font-size:1.1rem;">Text Me a Login Code</div>
-            <div style="font-size:0.85rem; color:var(--text-muted);">One-time SMS code sent straight to your cell phone</div>
+        <!-- Left: trust panel -->
+        <div class="auth-panel">
+          <span class="badge badge-gold" style="align-self:flex-start;">Protected Family Access</span>
+          <h2>Welcome to Your Family Care Portal</h2>
+          <p>Review modifications, view technician visit photos, schedule safety visits, and download audit certificates — from anywhere.</p>
+          <div style="display:flex; flex-direction:column; gap:0.8rem;">
+            <div class="auth-check"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Before-and-after photos with 500-lb test sign-offs on every install.</span></div>
+            <div class="auth-check"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Live SMS alerts when technicians are en route or finished.</span></div>
+            <div class="auth-check"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span>Online invoices, VA grant paperwork, and care-note history in one place.</span></div>
           </div>
-        </button>
-
-        <button class="btn btn-white btn-lg" style="border:1.5px solid var(--color-border); padding:1.5rem; justify-content:flex-start; text-align:left;" onclick="window.showToast('<span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span> Secure Magic Link sent to your email! Click to enter instantly.');">
-          <span style="font-size:2rem; margin-right:1rem;"><span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.7 5.7 1.9-5.7 1.9L12 18.2l-1.9-5.7L4.4 10.6l5.7-1.9Z"/><path d="M19 15l.9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9Z"/></svg></span></span>
-          <div>
-            <div style="font-weight:700; color:var(--text-heading); font-size:1.1rem;">Email Magic Link</div>
-            <div style="font-size:0.85rem; color:var(--text-muted);">Instant password-free one-click sign-in link</div>
+          <div class="auth-stats">
+            <div><strong>2,450+</strong><span>Homes Secured</span></div>
+            <div><strong>4.98/5</strong><span>Family Rating</span></div>
+            <div><strong>24 Hrs</strong><span>Urgent Response</span></div>
           </div>
-        </button>
-      </div>
-    </div>
-  </section>
+          <div class="auth-quote">“Seeing mom’s finished bathroom photos in the portal gave our whole family relief — the test sign-off was right there.”<footer>— Rebecca Thorne • Daughter, Austin TX</footer></div>
+        </div>
 
-  <!-- ========================================================================
-       SECTION 5: Reassuring Family Peace-of-Mind Quote Showcase
-       ======================================================================== -->
-  <section class="section section-bg-forest">
-    <div class="container-narrow text-center">
-      <div style="font-size:3rem; color:var(--color-gold); font-family:var(--font-serif); line-height:1; margin-bottom:1rem;">“</div>
-      <p style="font-size:1.35rem; color:#FFFFFF; font-style:italic; line-height:1.7; margin-bottom:1.5rem;">
-        “Logging in and seeing the photos of mom's completed bathroom modifications gave our family an enormous sense of relief. We didn't have to wonder if it was done correctly—the 500-lb test sign-off was right there in the portal.”
-      </p>
-      <div style="color:var(--color-gold); font-weight:700; font-size:1.1rem;">— Rebecca Thorne</div>
-      <div style="color:var(--color-sage-light); font-size:0.9rem;">Daughter &amp; Family Portal User • Austin, TX</div>
-    </div>
-  </section>
+        <!-- Right: forms -->
+        <div class="auth-formside">
+          <div class="auth-tabs" role="tablist" aria-label="Sign in or register">
+            <button id="tabBtnLogin" role="tab" aria-selected="true" aria-controls="authLoginForm">Sign In</button>
+            <button id="tabBtnReg" role="tab" aria-selected="false" aria-controls="authRegisterForm">Create Account</button>
+          </div>
 
-  <!-- ========================================================================
-       SECTION 6: Account Support Helpdesk with Toll-Free Assistance
-       ======================================================================== -->
-  <section class="section">
-    <div class="container text-center">
-      <div style="background:var(--bg-secondary); border-radius:var(--radius-xl); padding:3.5rem; border:1px solid var(--color-border); max-width:750px; margin:0 auto;">
-        <span class="badge badge-terracotta" style="margin-bottom:1rem;">Need Help Signing In?</span>
-        <h2 style="font-size:2rem; margin-bottom:1rem;">Our Care Concierge Can Help Over the Phone</h2>
-        <p style="color:var(--text-muted); font-size:1.05rem; margin-bottom:1.75rem;">
-          If you or your parent are having trouble navigating the portal or forgotten your credentials, our friendly support team will assist you in seconds.
-        </p>
-        <a href="tel:18005550199" class="btn btn-primary btn-lg">Call Support: (800) 555-0199</a>
+          <!-- FORM 1: Login -->
+          <form id="authLoginForm" role="tabpanel" aria-labelledby="tabBtnLogin" onsubmit="event.preventDefault(); window.showToast('Welcome back! Signing you into your family portal...', 'success'); setTimeout(() => window.location.href='dashboard.html', 900);">
+            <div class="form-group">
+              <label class="form-label" for="loginEmail">Email Address or Phone Number *</label>
+              <input type="text" id="loginEmail" class="form-control" placeholder="e.g. sarah.miller@example.com" value="sarah.miller@example.com" required autocomplete="username">
+            </div>
+
+            <div class="form-group">
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <label class="form-label" for="loginPass" style="margin:0;">Password *</label>
+                <a href="#" style="font-size:0.85rem; color:var(--color-terracotta);" onclick="event.preventDefault(); window.showToast('Reset password link sent to your registered email!');">Forgot password?</a>
+              </div>
+              <div class="pw-wrap">
+                <input type="password" id="loginPass" class="form-control" value="••••••••••••" required autocomplete="current-password">
+                <button type="button" class="pw-toggle" data-target="loginPass" aria-label="Show password">Show</button>
+              </div>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1.5rem;">
+              <input type="checkbox" id="rememberMe" checked style="width:18px; height:18px;">
+              <label for="rememberMe" style="font-size:0.92rem; color:var(--text-muted); cursor:pointer;">Keep me signed in on this safe family device</label>
+            </div>
+
+            <button type="submit" class="btn btn-terracotta btn-lg" style="width:100%;">
+              Enter Family Dashboard <span class="icon icon-inline" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </button>
+
+            <div style="text-align:center; margin-top:1.25rem; font-size:0.9rem; color:var(--text-muted);">
+              Just looking around? The demo portal opens with one click — no password needed.
+            </div>
+
+            <div class="auth-alt">
+              <button type="button" class="auth-alt-btn js-toast-btn" data-toast="6-digit SMS verification code texted to your phone!">
+                <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                <span><strong>Text Me a Code</strong><small>One-time SMS, no password</small></span>
+              </button>
+              <button type="button" class="auth-alt-btn js-toast-btn" data-toast="Secure magic link sent to your email! Click it to enter instantly.">
+                <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+                <span><strong>Email Magic Link</strong><small>One-click password-free entry</small></span>
+              </button>
+            </div>
+          </form>
+
+          <!-- FORM 2: Register (hidden initially) -->
+          <form id="authRegisterForm" role="tabpanel" aria-labelledby="tabBtnReg" style="display:none;" onsubmit="event.preventDefault(); window.showToast('Family account created! Redirecting to setup...', 'success'); setTimeout(() => window.location.href='dashboard.html', 1200);">
+            <div class="grid grid-2" style="gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="regName">Your Name (Caregiver) *</label>
+                <input type="text" id="regName" class="form-control" placeholder="e.g. David Sterling" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regRelation">Your Relationship *</label>
+                <select id="regRelation" class="form-control" required>
+                  <option>Son / Daughter</option>
+                  <option>Senior Homeowner (Self)</option>
+                  <option>Spouse / Partner</option>
+                  <option>Guardian / Care Manager</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regSenior">Senior / Parent’s Full Name *</label>
+              <input type="text" id="regSenior" class="form-control" placeholder="e.g. Eleanor Vance" required>
+            </div>
+
+            <div class="grid grid-2" style="gap:1rem;">
+              <div class="form-group">
+                <label class="form-label" for="regPhone">Your Cell Phone *</label>
+                <input type="tel" id="regPhone" class="form-control" placeholder="(555) 000-0000" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="regEmail">Your Email *</label>
+                <input type="email" id="regEmail" class="form-control" placeholder="david@example.com" required autocomplete="email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regPass">Create a Strong Password *</label>
+              <div class="pw-wrap">
+                <input type="password" id="regPass" class="form-control" placeholder="At least 8 characters..." required autocomplete="new-password">
+                <button type="button" class="pw-toggle" data-target="regPass" aria-label="Show password">Show</button>
+              </div>
+              <div class="strength" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <div class="strength-label" role="status"></div>
+            </div>
+
+            <button type="submit" class="btn btn-forest btn-lg" style="width:100%; background:var(--color-forest); color:#FFFFFF;">
+              Create Free Family Account
+            </button>
+            <p style="text-align:center; font-size:0.82rem; color:var(--text-muted); margin-top:0.9rem;">Free forever for families • No card required • Cancel anytime</p>
+          </form>
+
+        </div>
       </div>
     </div>
   </section>
@@ -257,6 +223,65 @@
   <!-- Back to Top Button -->
   <button class="back-to-top" aria-label="Back to Top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg></span></button>
 
-  <script src="../assets/js/main.js?v=20"></script>
+  <script src="../assets/js/main.js?v=21"></script>
+  <script>
+    (function () {
+      var loginTab = document.getElementById('tabBtnLogin');
+      var regTab = document.getElementById('tabBtnReg');
+      var loginForm = document.getElementById('authLoginForm');
+      var regForm = document.getElementById('authRegisterForm');
+      function showLogin() {
+        loginForm.style.display = 'block'; regForm.style.display = 'none';
+        loginTab.setAttribute('aria-selected', 'true'); regTab.setAttribute('aria-selected', 'false');
+      }
+      function showReg() {
+        loginForm.style.display = 'none'; regForm.style.display = 'block';
+        loginTab.setAttribute('aria-selected', 'false'); regTab.setAttribute('aria-selected', 'true');
+      }
+      loginTab.addEventListener('click', showLogin);
+      regTab.addEventListener('click', showReg);
+
+      // Password visibility toggles (no emoji, senior-friendly text)
+      document.querySelectorAll('.pw-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var input = document.getElementById(btn.getAttribute('data-target'));
+          if (!input) return;
+          var show = input.type === 'password';
+          input.type = show ? 'text' : 'password';
+          btn.textContent = show ? 'Hide' : 'Show';
+          btn.setAttribute('aria-label', show ? 'Hide password' : 'Show password');
+        });
+      });
+
+      // Simple strength meter for the register password
+      var regPass = document.getElementById('regPass');
+      if (regPass) {
+        var bars = regPass.closest('.form-group').querySelectorAll('.strength i');
+        var label = regPass.closest('.form-group').querySelector('.strength-label');
+        var names = ['Too weak — add length', 'Fair — add a number or symbol', 'Good — almost there', 'Strong password'];
+        var colors = ['var(--color-danger)', 'var(--color-warning)', 'var(--color-warning)', 'var(--color-success)'];
+        regPass.addEventListener('input', function () {
+          var v = regPass.value, score = 0;
+          if (v.length >= 8) score++;
+          if (v.length >= 12) score++;
+          if (/[0-9]/.test(v) && /[^A-Za-z0-9]/.test(v)) score++;
+          if (/[a-z]/.test(v) && /[A-Z]/.test(v)) score++;
+          score = Math.max(v.length ? 1 : 0, Math.min(4, score));
+          bars.forEach(function (b, i) {
+            b.style.background = i < score ? colors[score - 1] : 'var(--color-border)';
+          });
+          label.textContent = v.length ? names[score - 1] : '';
+        });
+      }
+
+      // Password-free buttons via data attributes (no nested-quote handlers)
+      document.querySelectorAll('.js-toast-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          window.showToast(btn.getAttribute('data-toast'), 'success');
+        });
+      });
+
+    })();
+  </script>
 </body>
 </html>

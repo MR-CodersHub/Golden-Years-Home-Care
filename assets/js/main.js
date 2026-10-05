@@ -147,6 +147,10 @@ function initMobileMenu() {
   window.addEventListener('resize', () => {
     if (window.matchMedia('(min-width: 769px)').matches) closeMenu();
   });
+
+  // Store a closed menu in the back-button cache so returning never
+  // restores an open panel (or a scroll-locked body).
+  window.addEventListener('pagehide', closeMenu);
 }
 
 /* --------------------------------------------------------------------------
@@ -196,8 +200,14 @@ function initProfileDropdown() {
   });
 
   // bfcache (Back/Forward) restores the DOM as-is without re-running scripts,
-  // so always reset the menu when the page is shown.
+  // so always reset the menu when the page is shown…
   window.addEventListener('pageshow', closeAll);
+  // …and store it closed when leaving, so Back never restores it open.
+  // (The hover-open CSS can otherwise re-apply from a parked cursor.)
+  window.addEventListener('pagehide', () => {
+    closeAll();
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+  });
 }
 
 /* --------------------------------------------------------------------------
@@ -269,6 +279,10 @@ function initDashboardSidebar() {
   window.addEventListener('resize', () => {
     if (!isMobile()) closeMobile();
   });
+
+  // Never restore an open panel (or locked body scroll) via Back button.
+  window.addEventListener('pagehide', closeMobile);
+  window.addEventListener('pageshow', closeMobile);
 }
 
 /* --------------------------------------------------------------------------
